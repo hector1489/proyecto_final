@@ -30,7 +30,6 @@ Hector Gonzalez P.
          └── perfil.png
 
 2. Definir la navegación entre vistas marcando las públicas y las privadas.
-(2 Puntos)
 
 /__navegation__
 
@@ -43,16 +42,15 @@ Hector Gonzalez P.
    └──login_login_dashboard.
 
 3. Enlistar las dependencias a utilizar en el proyecto.
-(1 Puntos)
 
 ## Front end
 
 Description :
 
-  name : proyecto-final,
-  private : true,
-  version : 0.0.0,
-  type : module.
+    name : proyecto-final,
+    private : true,
+    version : 0.0.0,
+    type : module.
 
 
 Dependencies :
@@ -80,7 +78,7 @@ Description :
 
     name : backend,
     version : 1.0.0,
-    description : ,
+    description : backend,
     main : index.js.
 
 Dev-Dependencies :
@@ -99,7 +97,6 @@ Dependencies :
 
 
 4. Diseñar las tablas de la base de datos y sus relaciones.
-(2 Puntos)
 
 ##  Base de Datos :
 
