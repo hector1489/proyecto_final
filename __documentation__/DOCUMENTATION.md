@@ -31,7 +31,7 @@ Hector Gonzalez P.
 
 2. Definir la navegación entre vistas marcando las públicas y las privadas.
 
-/__navegation__
+/__publicas__
 
     └──  pantalla_principal/
          ├── home─detail
@@ -40,6 +40,10 @@ Hector Gonzalez P.
          ├── cart─cart
          ├── signup─signup─dashboard
          └── login─login─dashboard.
+
+/__privadas__
+
+N/A (Se requiere el rol de administrador para acceder a ciertas funciones).
 
 3. Enlistar las dependencias a utilizar en el proyecto.
 
@@ -109,6 +113,7 @@ CREATE TABLE usuarios :
     id    UUID DEFAULT uuid_generate_v4()   NOT NULL,
     email      VARCHAR(50)                  NOT NULL       UNIQUE,
     pass       VARCHAR                      NOT NULL,
+    es_admin   BOOLEAN                      DEFAULT        false,
     PRIMARY KEY(id).
 
 
@@ -129,4 +134,122 @@ CREATE TABLE inventario :
 
 5. Diseñar el contrato de datos de la API REST.
 
+## Autenticación :
 
+Iniciar Sesión (POST /login).
+
+ENTRADA :
+
+    email: usuario@dominio.com,
+    pass: contraseña.
+
+
+SALIDA EXISTOSA :
+
+    token : token_de_autenticacion.
+
+ERROR:
+
+    code : 401,
+    message : Credenciales_inválidas.
+
+
+## Usuarios :
+
+# Obtener Todos los Usuarios (GET /usuarios/no_existe_aun)
+
+Requieren Token de Administrador.
+
+SALIDA EXISTOSA :
+
+users :
+
+    id: uuid,
+    email: usuario@dominio.com,
+    es_admin: false.
+
+ERROR :
+
+    code : 401,
+    message : No tienes permisos para realizar esta acción.
+
+# Obtener Usuario por Email (GET /usuarios)
+
+Requiere Token de Administrador.
+
+SALIDA EXISTOSA :
+
+users :
+
+    id: uuid,
+    email: usuario@dominio.com,
+    es_admin: false.
+
+
+ERROR :
+
+    code : 401,
+    message : No tienes permisos para realizar esta acción.
+
+# Crear Nuevo Usuario (POST /usuarios)
+
+ENTRADA :
+
+    email : usuario@dominio.com,
+    pass : contraseña,
+    es_admin : false.
+
+
+SALIDA EXISTOSA :
+
+user:
+
+    id: uuid,
+    email: usuario@dominio.com,
+    es_admin: false.
+
+ERROR :
+
+    code : 500,
+    message : Error interno del servidor.
+
+# Actualizar Usuario (PUT /usuarios/:id)
+
+Requiere Token de Usuario Autenticado o Administrador.
+
+ENTRADA :
+
+    email : nuevo_email@dominio.com,
+    pass : nueva_contraseña,
+    es_admin : true.
+
+SALIDA EXISTOSA :
+
+user :
+
+    id: uuid,
+    email: nuevo_email@dominio.com,
+    es_admin: true.
+
+ERROR :
+
+    code: 401,
+    message: No tienes permisos para realizar esta acción.
+
+
+# Eliminar Usuario (DELETE /usuarios/:id)
+
+Requiere Token de Administrador
+
+SALIDA EXISTOSA :
+
+user :
+
+    id : uuid,
+    email : usuario_eliminado@dominio.com,
+    es_admin : false.
+
+ERROR :
+
+    code : 401,
+    message : No tienes permisos para realizar esta acción.
