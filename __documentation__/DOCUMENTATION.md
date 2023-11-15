@@ -32,13 +32,15 @@ Hector Gonzalez P.
 2. Definir la navegación entre vistas marcando las públicas y las privadas.
 (2 Puntos)
 
+/__navegation__
+
 └──Pantalla_principal/
-   ├──Home──Detail
-   ├──products──products
-   ├──contact──contact
-   ├──cart──cart
-   ├──signup──signup──dashboard
-   └──login──login──dashboard
+   ├──Home_Detail
+   ├──products_products
+   ├──contact_contact
+   ├──cart_cart
+   ├──signup_signup_dashboard
+   └──login_login_dashboard
 
 3. Enlistar las dependencias a utilizar en el proyecto.
 (1 Puntos)
