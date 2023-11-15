@@ -13,10 +13,11 @@ Hector Gonzalez P.
 1. Diseñar un boceto de las vistas del proyecto.
 
 /__documentation__
-    ├── diagrams/
-    │    ├── flujo_1.png
-    |    ├── flujo_2.png
-    │    └── flujo_3.png
+
+    └──  diagrams/
+         ├── flujo_1.png
+         ├── flujo_2.png
+         └── flujo_3.png
 
     └── screenshots/
          ├── pantalla_principal.png
@@ -31,23 +32,18 @@ Hector Gonzalez P.
 2. Definir la navegación entre vistas marcando las públicas y las privadas.
 (2 Puntos)
 
-/Pantalla_principal
+└──Pantalla_principal/
    ├──Home
    |    └──Detail
-
    ├──products
    |    └──products
-
    ├──contact
    |    └──contact
-
    ├──cart
    |    └──cart
-
    ├──signup
    |    └──signup
    |         └──dashboard
-
    └──login
         └──login
              └──dashboard
