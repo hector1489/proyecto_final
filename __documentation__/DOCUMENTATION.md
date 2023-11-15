@@ -57,59 +57,63 @@ Hector Gonzalez P.
 
 ## Front end
 
-{
-  "name": "proyecto-final",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "devDependencies": {
-    "@types/react": "^18.2.15",
-    "@types/react-dom": "^18.2.7",
-    "@vitejs/plugin-react-swc": "^3.4.1",
-    "eslint": "^8.45.0",
-    "eslint-plugin-react": "^7.32.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.3",
-    "vite": "^4.5.0"
-  }
-}
+
+  name : proyecto-final,
+  private : true,
+  version : 0.0.0,
+  type : module.
+
+  scripts :
+    dev : vite,
+    build : vite build,
+    lint : eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0,
+    preview : vite preview.
+
+  Dependencies :
+
+    react : 18.2.0,
+    react-dom : 18.2.0.
+
+  DevDependencies :
+
+    types/react : 18.2.15,
+    types/react-dom: 18.2.7,
+    vitejs/plugin-react-swc : 3.4.1,
+    eslint : 8.45.0,
+    eslint-plugin-react : 7.32.2,
+    eslint-plugin-react-hooks : 4.6.0,
+    eslint-plugin-react-refresh : 0.4.3,
+    vite : 4.5.0.
+
+
 
 
 ## Backend
 
-{
-  "name": "backend",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "nodemon": "^3.0.1",
-    "standard": "^17.1.0"
-  },
-  "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
-    "express": "^4.18.2",
-    "jsonwebtoken": "^9.0.2",
-    "pg": "^8.11.3"
-  }
-}
+  name : backend,
+  version : 1.0.0,
+  description : ,
+  main : index.js.
+
+  scripts :
+    test : echo \Error: no test specified\ && exit 1
+
+  keywords : [],
+  author : "",
+  license : ISC.
+
+  DevDependencies :
+    nodemon : 3.0.1,
+    standard : 17.1.0.
+
+  Dependencies :
+
+    cors : 2.8.5,
+    dotenv : 16.3.1,
+    express : 4.18.2,
+    jsonwebtoken : 9.0.2,
+    pg : 8.11.3.
+
 
 
 4. Diseñar las tablas de la base de datos y sus relaciones.
