@@ -4,7 +4,7 @@
 
 ## DOCUMENTACIÓN
 
-Proyecto Final para Desafíos Latam. Una página web de e-commerce para la venta de productos.
+Proyecto Final para Desafíos Latam. Página web de e-commerce para la venta de productos.
 
 ## Autor
 
@@ -17,7 +17,7 @@ Hector Gonzalez P.
     │    ├── flujo_1.png
     |    ├── flujo_2.png
     │    └── flujo_3.png
-    |
+
     └── screenshots/
          ├── pantalla_principal.png
          ├── pantalla_principal2.png
@@ -46,11 +46,11 @@ Hector Gonzalez P.
 
    ├──signup
    |    └──signup
-   |         └──home
+   |         └──dashboard
 
    └──login
         └──login
-             └──home
+             └──dashboard
 
 3. Enlistar las dependencias a utilizar en el proyecto.
 (1 Puntos)
@@ -64,19 +64,13 @@ Description :
   version : 0.0.0,
   type : module.
 
-Scripts :
-
-    dev : vite,
-    build : vite build,
-    lint : eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0,
-    preview : vite preview.
 
 Dependencies :
 
     react : 18.2.0,
     react-dom : 18.2.0.
 
-DevDependencies :
+Dev-Dependencies :
 
     types/react : 18.2.15,
     types/react-dom: 18.2.7,
@@ -99,14 +93,7 @@ Description :
   description : ,
   main : index.js.
 
-Scripts :
-
-  test : echo \Error: no test specified\ && exit 1
-  keywords : [],
-  author : "",
-  license : ISC.
-
-DevDependencies :
+Dev-Dependencies :
 
     nodemon : 3.0.1,
     standard : 17.1.0.
@@ -124,16 +111,22 @@ Dependencies :
 4. Diseñar las tablas de la base de datos y sus relaciones.
 (2 Puntos)
 
+##  Base de Datos :
+
 CREATE DATABASE itDojo;
 
-CREATE TABLE usuarios (
+## Tablas :
+
+CREATE TABLE usuarios :
+
     id    UUID DEFAULT uuid_generate_v4()   NOT NULL,
     email      VARCHAR(50)                  NOT NULL       UNIQUE,
     pass       VARCHAR                      NOT NULL,
-    PRIMARY KEY(id)
-);
+    PRIMARY KEY(id).
 
-CREATE TABLE inventario (
+
+CREATE TABLE inventario :
+
     id         SERIAL,
     nombre     VARCHAR(100),
     categoria  VARCHAR(100),
@@ -141,8 +134,7 @@ CREATE TABLE inventario (
     precio     INT,
     stock      INT,
     id_usuario UUID REFERENCES usuarios(id),
-    PRIMARY KEY(id)
-);
+    PRIMARY KEY(id).
 
 
 
