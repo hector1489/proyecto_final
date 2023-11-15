@@ -4,7 +4,7 @@
 
 ## DOCUMENTACIÓN
 
-Proyecto Final para Desafíos Latam. Página web de e-commerce para la venta de productos.
+Proyecto Final para Desafíos Latam. Página web de e-commerce para la venta de productos de oficina.
 
 ## Autor
 
@@ -35,12 +35,12 @@ Hector Gonzalez P.
 /__navegation__
 
 └──Pantalla_principal/
-   ├──Home_Detail
-   ├──products_products
-   ├──contact_contact
-   ├──cart_cart
-   ├──signup_signup_dashboard
-   └──login_login_dashboard
+   ├──home_detail.
+   ├──products_products.
+   ├──contact_contact.
+   ├──cart_cart.
+   ├──signup_signup_dashboard.
+   └──login_login_dashboard.
 
 3. Enlistar las dependencias a utilizar en el proyecto.
 (1 Puntos)
@@ -78,10 +78,10 @@ Dev-Dependencies :
 
 Description :
 
-  name : backend,
-  version : 1.0.0,
-  description : ,
-  main : index.js.
+    name : backend,
+    version : 1.0.0,
+    description : ,
+    main : index.js.
 
 Dev-Dependencies :
 
