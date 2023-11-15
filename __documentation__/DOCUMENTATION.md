@@ -33,20 +33,12 @@ Hector Gonzalez P.
 (2 Puntos)
 
 └──Pantalla_principal/
-   ├──Home
-   |    └──Detail
-   ├──products
-   |    └──products
-   ├──contact
-   |    └──contact
-   ├──cart
-   |    └──cart
-   ├──signup
-   |    └──signup
-   |         └──dashboard
-   └──login
-        └──login
-             └──dashboard
+   ├──Home──Detail
+   ├──products──products
+   ├──contact──contact
+   ├──cart──cart
+   ├──signup──signup──dashboard
+   └──login──login──dashboard
 
 3. Enlistar las dependencias a utilizar en el proyecto.
 (1 Puntos)
