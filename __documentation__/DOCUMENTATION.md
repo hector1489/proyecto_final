@@ -34,20 +34,20 @@ Hector Gonzalez P.
 /Pantalla_principal
    ├──Home
    |    └──Detail
-   |
+
    ├──products
    |    └──products
-   |
+
    ├──contact
    |    └──contact
-   |
+
    ├──cart
    |    └──cart
-   |
+
    ├──signup
    |    └──signup
    |         └──home
-   |
+
    └──login
         └──login
              └──home
@@ -57,24 +57,26 @@ Hector Gonzalez P.
 
 ## Front end
 
+Desciption :
 
   name : proyecto-final,
   private : true,
   version : 0.0.0,
   type : module.
 
-  scripts :
+Scripts :
+
     dev : vite,
     build : vite build,
     lint : eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0,
     preview : vite preview.
 
-  Dependencies :
+Dependencies :
 
     react : 18.2.0,
     react-dom : 18.2.0.
 
-  DevDependencies :
+DevDependencies :
 
     types/react : 18.2.15,
     types/react-dom: 18.2.7,
@@ -90,23 +92,26 @@ Hector Gonzalez P.
 
 ## Backend
 
+Desciption :
+
   name : backend,
   version : 1.0.0,
   description : ,
   main : index.js.
 
-  scripts :
-    test : echo \Error: no test specified\ && exit 1
+Scripts :
 
+  test : echo \Error: no test specified\ && exit 1
   keywords : [],
   author : "",
   license : ISC.
 
-  DevDependencies :
+DevDependencies :
+
     nodemon : 3.0.1,
     standard : 17.1.0.
 
-  Dependencies :
+Dependencies :
 
     cors : 2.8.5,
     dotenv : 16.3.1,
