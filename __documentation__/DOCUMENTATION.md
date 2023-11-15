@@ -33,13 +33,13 @@ Hector Gonzalez P.
 
 /__navegation__
 
-└──Pantalla_principal/
-   ├──home_detail.
-   ├──products_products.
-   ├──contact_contact.
-   ├──cart_cart.
-   ├──signup_signup_dashboard.
-   └──login_login_dashboard.
+└──  pantalla_principal/
+     ├── home──detail
+     ├── products──products
+     ├── contact──contact
+     ├── cart──cart
+     ├── signup──signup──dashboard
+     └── login──login──dashboard.
 
 3. Enlistar las dependencias a utilizar en el proyecto.
 
