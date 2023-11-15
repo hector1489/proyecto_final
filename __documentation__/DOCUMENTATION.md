@@ -57,7 +57,7 @@ Hector Gonzalez P.
 
 ## Front end
 
-Desciption :
+Description :
 
   name : proyecto-final,
   private : true,
@@ -92,7 +92,7 @@ DevDependencies :
 
 ## Backend
 
-Desciption :
+Description :
 
   name : backend,
   version : 1.0.0,
