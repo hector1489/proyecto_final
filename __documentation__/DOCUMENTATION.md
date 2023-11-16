@@ -1,6 +1,6 @@
 # Proyecto Final - Desafíos Latam
 
-# proyecto :  IT DOJO
+#  IT DOJO
 
 ## DOCUMENTACIÓN
 
@@ -10,16 +10,122 @@ Proyecto Final para Desafíos Latam. Página web de e-commerce para la venta de 
 
 Hector Gonzalez P.
 
-# REQUERIMIENTOS :
+# Stack Tecnológico y Setup
+
+## Stack Tecnológico
+
+### Frontend (Proyecto Final)
+
+#### Tecnologías Principales:
+
+- React v18.2.0
+- Vite v4.5.0
+
+#### Dependencias Principales:
+
+- `@types/react` v18.2.15
+- `@types/react-dom` v18.2.7
+- `@vitejs/plugin-react-swc` v3.4.1
+- eslint v8.45.0
+- eslint-plugin-react v7.32.2
+- eslint-plugin-react-hooks v4.6.0
+- eslint-plugin-react-refresh v0.4.3
+
+### Backend
+
+#### Tecnologías Principales:
+
+- Node.js v18.16.1
+- Express v4.18.2
+
+#### Dependencias Principales:
+
+- bcryptjs v2.4.3
+- cors v2.8.5
+- dotenv v16.3.1
+- jsonwebtoken v9.0.2
+- pg v8.11.3
+
+## Setup de la Aplicación
+
+### Frontend (Proyecto Final)
+
+1. **Instalación de Dependencias:**
+
+    ```bash
+    npm install
+    ```
+
+2. **Desarrollo:**
+
+    ```bash
+    npm run dev
+    ```
+
+    Esto iniciará el servidor de desarrollo de Vite para el frontend.
+
+3. **Producción:**
+
+    ```bash
+    npm run build
+    ```
+
+    Esto construirá la aplicación para producción.
+
+### Backend
+
+1. **Instalación de Dependencias:**
+
+    ```bash
+    npm install
+    ```
+
+2. **Desarrollo con Nodemon:**
+
+    ```bash
+    npm run dev
+    ```
+
+    Esto iniciará el servidor backend con Nodemon para desarrollo.
+
+3. **Iniciar en Producción:**
+
+    ```bash
+    npm start
+    ```
+
+    Esto iniciará el servidor en un entorno de producción.
+
+4. **Linter:**
+
+    ```bash
+    npm run lint
+    ```
+
+    Esto ejecutará el linter para el backend.
+
+> **Nota:** Asegúrate de tener Node.js y npm instalados en tu sistema antes de ejecutar estos comandos.
+
+Con estos pasos, deberías poder configurar y ejecutar tanto el frontend como el backend de tu aplicación de e-commerce.
+
+
+
+
+# REQUERIMIENTOS LATAM :
 
 1. Diseñar un boceto de las vistas del proyecto.
+
+VISITAR :
 
 /__documentation__
 
     └──  diagrams/
+         ├── diagrama_routes1.1.png
+         ├── diagramaDB1.png
          ├── flujo_1.png
          ├── flujo_2.png
-         └── flujo_3.png
+         ├── flujo_3.png
+         └── flujo_login1.png
 
     └── screenshots/
          ├── pantalla_principal.png
@@ -29,9 +135,18 @@ Hector Gonzalez P.
          ├── all_products.png
          ├── contacts.png
          ├── Details.png
-         └── perfil.png
+         ├── login_signup.png
+         ├── login_user1.png
+         ├── login_admin1.png
+         └── order_admin1.png
 
 2. Definir la navegación entre vistas marcando las públicas y las privadas.
+
+VISITAR :
+
+__documentation__/diagrams/diagrama_routes1.png
+
+diagrama:
 
 /__publicas__
 
@@ -40,24 +155,24 @@ Hector Gonzalez P.
          ├── products─products
          ├── contact─contact
          ├── cart─cart
-         ├── signup─signup─dashboard
-         └── login─login─dashboard.
+         └── login─sugnup.
 
 /__privadas__
 
-    └──  dashboard/
-         ├── mis_publicaciones
-         ├── mis_favoritos
-         └── contact─contact
+    └──  user/
+         ├── mis_favorites
+         └── mis_orders
 
 
 
-    └──  tienda/
-         └── detalle de mi publicacion.
+    └──  admin/
+         ├── users.
+         ├── orders.
+         └── inventory.
 
 3. Enlistar las dependencias a utilizar en el proyecto.
 
-## Front end
+## Dependencias Front end
 
 Description :
 
@@ -86,7 +201,7 @@ Dev-Dependencies :
 
 
 
-## Backend
+## Dependencias Backend
 
 Description :
 
@@ -118,10 +233,12 @@ CREATE DATABASE itDojo;
 
 ## Tablas :
 
+VISITAR:
+
 /__documentation__
 
     └──  dashboard/
-         └── diagrama1.png
+         └── diagramaDB1.png
 
 
 
@@ -270,3 +387,6 @@ ERROR :
 
     code : 401,
     message : No tienes permisos para realizar esta acción.
+
+
+
