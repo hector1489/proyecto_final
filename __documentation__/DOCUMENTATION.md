@@ -10,6 +10,10 @@ Proyecto Final para Desafíos Latam. Página web de e-commerce para la venta de 
 
 Hector Gonzalez P.
 
+## License
+
+MIT.
+
 # Stack Tecnológico y Setup
 
 ## Stack Tecnológico
