@@ -10,6 +10,8 @@ Proyecto Final para Desafíos Latam. Página web de e-commerce para la venta de 
 
 Hector Gonzalez P.
 
+# REQUERIMIENTOS :
+
 1. Diseñar un boceto de las vistas del proyecto.
 
 /__documentation__
@@ -43,7 +45,15 @@ Hector Gonzalez P.
 
 /__privadas__
 
-N/A (Se requiere el rol de administrador para acceder a ciertas funciones).
+    └──  dashboard/
+         ├── mis_publicaciones
+         ├── mis_favoritos
+         └── contact─contact
+
+
+
+    └──  tienda/
+         └── detalle de mi publicacion.
 
 3. Enlistar las dependencias a utilizar en el proyecto.
 
@@ -107,6 +117,11 @@ Dependencies :
 CREATE DATABASE itDojo;
 
 ## Tablas :
+
+/__documentation__
+
+   └── screenshots/
+         └── diagrama_db1.png
 
 CREATE TABLE usuarios :
 
