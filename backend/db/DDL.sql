@@ -2,8 +2,8 @@ CREATE DATABASE itDojo;
 
 CREATE TABLE usuarios (
     id    UUID DEFAULT uuid_generate_v4()   NOT NULL,
-    email      VARCHAR(50)                  NOT NULL       UNIQUE,
-    pass       VARCHAR                      NOT NULL,
+    email      VARCHAR(100)                 NOT NULL       UNIQUE,
+    pass       VARCHAR(100)                 NOT NULL,
     es_admin   BOOLEAN                      DEFAULT        false,
     PRIMARY KEY(id)
 );

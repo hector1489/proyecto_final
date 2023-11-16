@@ -120,8 +120,10 @@ CREATE DATABASE itDojo;
 
 /__documentation__
 
-   └── screenshots/
-         └── diagrama_db1.png
+    └──  dashboard/
+         └── diagrama1.png
+
+
 
 CREATE TABLE usuarios :
 
