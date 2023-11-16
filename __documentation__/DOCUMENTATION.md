@@ -237,7 +237,7 @@ VISITAR:
 
 /__documentation__
 
-    └──  dashboard/
+    └──  diagrams/
          └── diagramaDB1.png
 
 
@@ -290,7 +290,7 @@ ERROR:
 
 ## Usuarios :
 
-# Obtener Todos los Usuarios (GET /usuarios/no_existe_aun)
+# Obtener Todos los Usuarios (GET /usuarios)
 
 Requieren Token de Administrador.
 
