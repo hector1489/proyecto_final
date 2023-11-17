@@ -136,13 +136,13 @@ VISITAR :
          ├── pantalla_principal2.png
          ├── pantalla_principal3.png
          ├── pantalla_principal4.png
-         ├── all_products.png
-         ├── contacts.png
-         ├── Details.png
-         ├── login_signup.png
-         ├── login_user1.png
-         ├── login_admin1.png
-         └── order_admin1.png
+         ├── productos.png
+         ├── contacto.png
+         ├── Detalle.png
+         ├── acceder_registrarse.png
+         ├── acceder_user1.png
+         ├── acceder_admin1.png
+         └── pedidos_admin1.png
 
 2. Definir la navegación entre vistas marcando las públicas y las privadas.
 
@@ -154,8 +154,7 @@ diagrama:
 
 /__publicas__
 
-    └──  pantalla_principal/
-         ├── home─detail
+    └──  home/
          ├── products─products
          ├── contact─contact
          ├── cart─cart
@@ -164,8 +163,8 @@ diagrama:
 /__privadas__
 
     └──  user/
-         ├── mis_favorites
-         └── mis_orders
+         ├── favorites
+         └── orders
 
 
 
@@ -245,18 +244,20 @@ VISITAR:
          └── diagramaDB1.png
 
 
+## Ejecutable :
 
-CREATE TABLE usuarios :
+CREATE DATABASE itDojo;
+\c itDojo;
 
+CREATE TABLE usuarios (
     id    UUID DEFAULT uuid_generate_v4()   NOT NULL,
-    email      VARCHAR(50)                  NOT NULL       UNIQUE,
-    pass       VARCHAR                      NOT NULL,
+    email      VARCHAR(100)                 NOT NULL       UNIQUE,
+    pass       VARCHAR(100)                 NOT NULL,
     es_admin   BOOLEAN                      DEFAULT        false,
-    PRIMARY KEY(id).
+    PRIMARY KEY(id)
+);
 
-
-CREATE TABLE inventario :
-
+CREATE TABLE inventario (
     id         SERIAL,
     nombre     VARCHAR(100),
     categoria  VARCHAR(100),
@@ -264,9 +265,36 @@ CREATE TABLE inventario :
     precio     INT,
     stock      INT,
     id_usuario UUID REFERENCES usuarios(id),
-    PRIMARY KEY(id).
+    id_orden   REFERENCES ordenes(id),
+    PRIMARY KEY(id)
+);
 
+/*tabla para las ordenes*/
+CREATE TABLE ordenes (
+    id              SERIAL,
+    id_usuario UUID REFERENCES usuarios(id),
+    fecha           TIMESTAMP               DEFAULT CURRENT_TIMESTAMP,
+    estado          VARCHAR(50),
+    direccion_envio VARCHAR(255),
+    PRIMARY KEY(id)
+);
 
+/*tabla para los favoritos*/
+CREATE TABLE favoritos (
+    id              SERIAL,
+    id_usuario UUID REFERENCES usuarios(id),
+    id_inventario   INT                     REFERENCES inventario(id),
+    fecha_agregado  TIMESTAMP               DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY(id)
+);
+
+/*tabla para guardar la url de las imagenes*/
+CREATE TABLE imagenes_producto (
+    id            SERIAL,
+    id_inventario INT REFERENCES inventario(id),
+    url           VARCHAR(255),
+    PRIMARY KEY(id)
+);
 
 
 
