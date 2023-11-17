@@ -6,7 +6,6 @@ const { verifyToken } = require('./middleware/event.middleware')
 const { verifyCredentials } = require('./models/Usuarios.dao')
 
 const {
-    findUsuarios,
     findUsuarioByEmail,
     createUsuario,
     updateUsuario,
@@ -51,13 +50,6 @@ app.post('/login', (req, res) => {
                 ? res.status(200).json({ token: jwtSign({ email: req.body.email }) })
                 : res.status(400).json({ code: 404, message: 'Resource not found.' })
         })
-        .catch((error) => res.status(500).json(error))
-})
-
-// Endpoint para obtener todos los usuarios (requiere token)
-app.get('/usuarios/', verifyToken, (_, res) => {
-    findUsuarios()
-        .then((events) => res.status(200).json({ events }))
         .catch((error) => res.status(500).json(error))
 })
 

@@ -1,7 +1,6 @@
 const db = require('../database/db')
 const { encrypt } = require('../../utils/bcrypt')
 
-const findUsuarios = async () => await db.query('SELECT * FROM usuarios;')
 
 const findUsuarioByEmail = async (email) => await db.query('SELECT * FROM usuarios WHERE email = $1;', [email])
 
@@ -20,7 +19,6 @@ const updateUsuario = async (id, { email, pass, es_admin }) => {
 const deleteUsuario = async (id) => await db.query('DELETE FROM usuarios WHERE id = $1 RETURNING *;', [id])
 
 module.exports = {
-    findUsuarios,
     findUsuarioByEmail,
     createUsuario,
     updateUsuario,
