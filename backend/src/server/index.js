@@ -4,9 +4,9 @@ const cors = require('cors')
 
 
 const userRoutes = require('./Routes/userRoutes')
-const inventoryRoutes = require('./routes/inventoryRoutes')
-const orderRoutes = require('./routes/orderRoutes')
-const favoriteRoutes = require('./routes/favoriteRoutes')
+const inventoryRoutes = require('./Routes/inventoryRoutes')
+const orderRoutes = require('./Routes/orderRoutes')
+const favoriteRoutes = require('./Routes/favoriteRoutes')
 
 const PORT = process.env.PORT ?? 3000
 const app = express()
