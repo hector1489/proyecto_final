@@ -1,12 +1,13 @@
 require('dotenv').config()
+
 const express = require('express')
 const cors = require('cors')
 
 
-const userRoutes = require('./Routes/userRoutes')
-const inventoryRoutes = require('./Routes/inventoryRoutes')
-const orderRoutes = require('./Routes/orderRoutes')
-const favoriteRoutes = require('./Routes/favoriteRoutes')
+const userRoutes = require('./Routes/userRoutes.js')
+const inventoryRoutes = require('./Routes/inventoryRoutes.js')
+const orderRoutes = require('./Routes/orderRoutes.js')
+const favoriteRoutes = require('./Routes/favoriteRoutes.js')
 
 const PORT = process.env.PORT ?? 3000
 const app = express()

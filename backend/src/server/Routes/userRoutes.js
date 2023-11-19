@@ -9,7 +9,7 @@ const {
     createUsuario,
     updateUsuario,
     deleteUsuario
-} = require('../models/Eventos.dao')
+} = require('../models/Eventos.dao.js')
 
 // Endpoint para manejar la autenticación y generar un token
 userRoutes.post('/login', (req, res) => {

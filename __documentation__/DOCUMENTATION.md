@@ -5,6 +5,9 @@
 ## DOCUMENTACIÓN
 
 Proyecto Final para Desafíos Latam. Página web de e-commerce para la venta de productos de oficina.
+diseño y prototipo.
+
+<span>Recordar reparar, el pass a la db esta llegando undifined, revisar: variables de entorno,usuarios.dao y utils. / antes de intentar sin dotenv. </span>
 
 ## Autor
 
