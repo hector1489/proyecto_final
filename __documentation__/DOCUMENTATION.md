@@ -250,7 +250,7 @@ VISITAR:
 CREATE DATABASE itdojo;
 \c itdojo;
 
-# tabla para los usuarios
+## tabla para los usuarios
 
 CREATE TABLE usuarios (
     id       UUID DEFAULT uuid_generate_v4() NOT NULL,
@@ -260,7 +260,7 @@ CREATE TABLE usuarios (
     PRIMARY KEY(id)
 );
 
-# tabla para las pedidos
+## tabla para las pedidos
 
 CREATE TABLE pedidos (
     id              SERIAL,
@@ -271,7 +271,7 @@ CREATE TABLE pedidos (
     PRIMARY KEY(id)
 );
 
-# tabla de inventario
+## tabla de inventario
 
 CREATE TABLE inventario (
     id         SERIAL,
@@ -285,7 +285,7 @@ CREATE TABLE inventario (
     PRIMARY KEY(id)
 );
 
-# tabla para los favoritos
+## tabla para los favoritos
 
 CREATE TABLE favoritos (
     id              SERIAL,
@@ -295,7 +295,7 @@ CREATE TABLE favoritos (
     PRIMARY KEY(id)
 );
 
-# tabla para guardar la url de las imagenes
+## tabla para guardar la url de las imagenes
 
 CREATE TABLE imagenes_producto (
     id            SERIAL,
@@ -310,5 +310,4 @@ CREATE TABLE imagenes_producto (
 URL postman :
 
 https://documenter.getpostman.com/view/30714067/2s9Ye8fuRx
-
 
