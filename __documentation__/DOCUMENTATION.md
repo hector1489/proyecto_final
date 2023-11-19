@@ -245,18 +245,22 @@ VISITAR:
          └── diagramaDB1.png
 
 
-## Ejecutable :
+# Ejecutable :
 
 CREATE DATABASE itdojo;
 \c itdojo;
 
+# tabla para los usuarios
+
 CREATE TABLE usuarios (
     id       UUID DEFAULT uuid_generate_v4() NOT NULL,
     email    VARCHAR(100) NOT NULL UNIQUE,
-    pass     VARCHAR(100) NOT NULL,
+    pass     VARCHAR(255) NOT NULL,
     es_admin BOOLEAN DEFAULT false,
     PRIMARY KEY(id)
 );
+
+# tabla para las pedidos
 
 CREATE TABLE pedidos (
     id              SERIAL,
@@ -266,6 +270,8 @@ CREATE TABLE pedidos (
     direccion_envio VARCHAR(255),
     PRIMARY KEY(id)
 );
+
+# tabla de inventario
 
 CREATE TABLE inventario (
     id         SERIAL,
@@ -279,6 +285,8 @@ CREATE TABLE inventario (
     PRIMARY KEY(id)
 );
 
+# tabla para los favoritos
+
 CREATE TABLE favoritos (
     id              SERIAL,
     id_usuario      UUID REFERENCES usuarios(id),
@@ -287,13 +295,14 @@ CREATE TABLE favoritos (
     PRIMARY KEY(id)
 );
 
+# tabla para guardar la url de las imagenes
+
 CREATE TABLE imagenes_producto (
     id            SERIAL,
     id_inventario SERIAL REFERENCES inventario(id),
     url           VARCHAR(255),
     PRIMARY KEY(id)
 );
-
 
 
 5. Diseñar el contrato de datos de la API REST.
