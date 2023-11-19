@@ -1,0 +1,1761 @@
+{
+	"info": {
+		"_postman_id": "3f5e3320-aaa8-451e-bcfa-6026a5e02802",
+		"name": "itdojo",
+		"description": "Proyecto Final para Desafíos Latam G-32. Página web de e-commerce para la venta de productos de oficina. diseño y prototipo.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30714067"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = JSON.parse(responseBody)",
+									"postman.setEnvironmentVariable('token',jsonData.token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "jwt",
+							"jwt": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "isSecretBase64Encoded",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "algorithm",
+									"value": "HS256",
+									"type": "string"
+								},
+								{
+									"key": "payload",
+									"value": "{}",
+									"type": "string"
+								},
+								{
+									"key": "headerPrefix",
+									"value": "Bearer",
+									"type": "string"
+								},
+								{
+									"key": "queryParamKey",
+									"value": "token",
+									"type": "string"
+								},
+								{
+									"key": "header",
+									"value": "{}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"usuario2@example.com\",\n  \"pass\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/users/login",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						},
+						"description": "Ruta para el ingreso de usuarios."
+					},
+					"response": [
+						{
+							"name": "successfull response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"usuario2@example.com\",\n  \"pass\": \"123456\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/users/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"users",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "181"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b5-Lbc2UlvSQlbFfb/1chhrb1EYG4E\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 15:49:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzdWFyaW8yQGV4YW1wbGUuY29tIiwiaWF0IjoxNzAwNDA4OTQzLCJleHAiOjE3MDA0MDkyNDN9.nAW8ocW-atgP75DJ9MYW_R4KXaCCfBSzLgiUQyewW1M\"\n}"
+						},
+						{
+							"name": "falled response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/users/login",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"users",
+										"login"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2-vyGp6PvFo4RvsFtPoIWeCReyIC8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 15:49:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{}"
+						}
+					]
+				},
+				{
+					"name": "register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const [newEvent] = JSON.parse(responseBody)",
+									"postman.setEnvironmentVariable('newUserId',newEvent.id)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"usuario5@example.com\",\n  \"pass\": \"password\",\n  \"es_admin\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/users/register",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"register"
+							]
+						},
+						"description": "Ruta para el registro de usuarios."
+					},
+					"response": [
+						{
+							"name": "sucessfull response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"usuario5@example.com\",\n  \"pass\": \"password\",\n  \"es_admin\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/users/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"users",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "176"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b0-879ccNbLYwl3O+R5V6IbkmmoDb0\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 15:45:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"events\": [\n        {\n            \"id\": \"50c745aa-d209-4f7c-a2ee-39d83c9f9311\",\n            \"email\": \"usuario5@example.com\",\n            \"pass\": \"$2a$10$DGmtDtVtGc5bCk2tLKVHQOxtc5vfZavd4ho12tklXeWy9E5E8gs.S\",\n            \"es_admin\": false\n        }\n    ]\n}"
+						},
+						{
+							"name": "falled response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/users/register",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"users",
+										"register"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2-vyGp6PvFo4RvsFtPoIWeCReyIC8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 15:48:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{}"
+						}
+					]
+				},
+				{
+					"name": "usuarios/:id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Verify the length of the response data",
+									"pm.test(\"The response data length must be greater than zero\", function () {",
+									"    const responseData = pm.response.json();",
+									"   ",
+									"    pm.expect(Object.keys(responseData).length).to.be.greaterThan(0, \"Response data should not be empty\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"usuario4@example.com\",\n  \"pass\": \"password\",\n  \"es_admin\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/users/usuarios/84204fca-7d56-400d-aa75-e696ecd6efca",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"usuarios",
+								"84204fca-7d56-400d-aa75-e696ecd6efca"
+							]
+						},
+						"description": "Ruta para actualizar un usuario (requiere token)"
+					},
+					"response": [
+						{
+							"name": "401",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"usuario4@example.com\",\n  \"pass\": \"password\",\n  \"es_admin\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/users/usuarios/84204fca-7d56-400d-aa75-e696ecd6efca",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"users",
+										"usuarios",
+										"84204fca-7d56-400d-aa75-e696ecd6efca"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "53"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"35-qbKf+ByWbGqPvOWp3m+OTzkq2VI\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 15:53:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 401,\n    \"message\": \"Error al verificar el token.\"\n}"
+						},
+						{
+							"name": "sucessfull response",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"usuario4@example.com\",\n  \"pass\": \"password\",\n  \"es_admin\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/users/usuarios/84204fca-7d56-400d-aa75-e696ecd6efca",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"users",
+										"usuarios",
+										"84204fca-7d56-400d-aa75-e696ecd6efca"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "176"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b0-/gIL1Bg2RopDoxWfee741CbILVQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 16:06:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"events\": [\n        {\n            \"id\": \"84204fca-7d56-400d-aa75-e696ecd6efca\",\n            \"email\": \"usuario4@example.com\",\n            \"pass\": \"$2a$10$Z3jRfovQvuTp9udYqcTMyu4tWePu82uY3UTtgCjdWZN8jVmzy72SK\",\n            \"es_admin\": false\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "usuarios/:id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"usuario4@example.com\",\n  \"pass\": \"password\",\n  \"es_admin\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/users/usuarios/84204fca-7d56-400d-aa75-e696ecd6efca",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"usuarios",
+								"84204fca-7d56-400d-aa75-e696ecd6efca"
+							]
+						},
+						"description": "Ruta para eliminar un usuario (requiere token)"
+					},
+					"response": [
+						{
+							"name": "404",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"usuario5@example.com\",\n  \"pass\": \"password\",\n  \"es_admin\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/users/usuarios/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"users",
+										"usuarios",
+										""
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"47-T6sJ6TV2CChjNTcXoyMW7k4VdjA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 16:08:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 404,\n    \"message\": \"La ruta no se encuentra en este sistema solar.\"\n}"
+						},
+						{
+							"name": "sucessfull response",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"usuario4@example.com\",\n  \"pass\": \"password\",\n  \"es_admin\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/users/usuarios/84204fca-7d56-400d-aa75-e696ecd6efca",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"users",
+										"usuarios",
+										"84204fca-7d56-400d-aa75-e696ecd6efca"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "176"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b0-/gIL1Bg2RopDoxWfee741CbILVQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 16:13:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"events\": [\n        {\n            \"id\": \"84204fca-7d56-400d-aa75-e696ecd6efca\",\n            \"email\": \"usuario4@example.com\",\n            \"pass\": \"$2a$10$Z3jRfovQvuTp9udYqcTMyu4tWePu82uY3UTtgCjdWZN8jVmzy72SK\",\n            \"es_admin\": false\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "New Request",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"usuario2@example.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/users/usuarios",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"usuarios"
+							]
+						},
+						"description": "Ruta para obtener un usuario por correo electrónico (requiere token)"
+					},
+					"response": [
+						{
+							"name": "falled response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/users/usuarios",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"users",
+										"usuarios"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2-vyGp6PvFo4RvsFtPoIWeCReyIC8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 16:16:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{}"
+						},
+						{
+							"name": "sucessfull response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"usuario2@example.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/users/usuarios",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"users",
+										"usuarios"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "165"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a5-whhQgVS8pji7/1GnZgASdKnKAR4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 16:22:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"3fbc85f3-e3ab-46b5-827d-780cc0aa8c0a\",\n        \"email\": \"usuario2@example.com\",\n        \"pass\": \"$2a$10$3och3OWK/WWmr7wQvyJwU.YA/QeIOZJxOt9hVa3TV1qeUA9IyqbsK\",\n        \"es_admin\": false\n    }\n]"
+						}
+					]
+				}
+			],
+			"description": "Rutas para registro base de datos itDojo"
+		},
+		{
+			"name": "inventory",
+			"item": [
+				{
+					"name": "/inventario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"description": "Ruta para obtener todos los productos en el inventario."
+					},
+					"response": [
+						{
+							"name": "sucessfull response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/inventory/inventario",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"inventory",
+										"inventario"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "516"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"204-KGYlBlJER9JIj0KPfqW0Up+pOek\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 16:50:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"productos\": [\n        {\n            \"id\": 16,\n            \"nombre\": \"Silla Reclinable\",\n            \"categoria\": \"sillas\",\n            \"envio\": \"santiago\",\n            \"precio\": 50000,\n            \"stock\": 2,\n            \"id_usuario\": \"3fbc85f3-e3ab-46b5-827d-780cc0aa8c0a\",\n            \"id_pedido\": 1\n        },\n        {\n            \"id\": 17,\n            \"nombre\": \"Mause Pad\",\n            \"categoria\": \"mausepad\",\n            \"envio\": \"santiago\",\n            \"precio\": 15000,\n            \"stock\": 10,\n            \"id_usuario\": \"3fbc85f3-e3ab-46b5-827d-780cc0aa8c0a\",\n            \"id_pedido\": 2\n        },\n        {\n            \"id\": 18,\n            \"nombre\": \"Escritorio\",\n            \"categoria\": \"escritorio\",\n            \"envio\": \"santiago\",\n            \"precio\": 10000,\n            \"stock\": 2,\n            \"id_usuario\": \"3fbc85f3-e3ab-46b5-827d-780cc0aa8c0a\",\n            \"id_pedido\": 2\n        }\n    ]\n}"
+						},
+						{
+							"name": "404",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/inventory/invent",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"inventory",
+										"invent"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"47-T6sJ6TV2CChjNTcXoyMW7k4VdjA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 16:51:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 404,\n    \"message\": \"La ruta no se encuentra en este sistema solar.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "inventario/:id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"16\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/inventory/inventario/",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"inventory",
+								"inventario",
+								""
+							]
+						},
+						"description": "Ruta para obtener un producto específico por su ID."
+					},
+					"response": [
+						{
+							"name": "falled response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/inventory/inventario/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"inventory",
+										"inventario",
+										"1"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'none'"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1653"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 16:54:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"utf-8\">\n        <title>Error</title>\n    </head>\n    <body>\n        <pre>ReferenceError: req is not defined\n            <br> &nbsp; &nbsp;at /home/hector/Escritorio/latam/proyecto final/proyecto_final/backend/src/server/Routes/inventoryRoutes.js:22:21\n            <br> &nbsp; &nbsp;at Layer.handle [as handle_request] (/home/hector/Escritorio/latam/proyecto final/proyecto_final/backend/node_modules/express/lib/router/layer.js:95:5)\n            <br> &nbsp; &nbsp;at next (/home/hector/Escritorio/latam/proyecto final/proyecto_final/backend/node_modules/express/lib/router/route.js:144:13)\n            <br> &nbsp; &nbsp;at Route.dispatch (/home/hector/Escritorio/latam/proyecto final/proyecto_final/backend/node_modules/express/lib/router/route.js:114:3)\n            <br> &nbsp; &nbsp;at Layer.handle [as handle_request] (/home/hector/Escritorio/latam/proyecto final/proyecto_final/backend/node_modules/express/lib/router/layer.js:95:5)\n            <br> &nbsp; &nbsp;at /home/hector/Escritorio/latam/proyecto final/proyecto_final/backend/node_modules/express/lib/router/index.js:284:15\n            <br> &nbsp; &nbsp;at param (/home/hector/Escritorio/latam/proyecto final/proyecto_final/backend/node_modules/express/lib/router/index.js:365:14)\n            <br> &nbsp; &nbsp;at param (/home/hector/Escritorio/latam/proyecto final/proyecto_final/backend/node_modules/express/lib/router/index.js:376:14)\n            <br> &nbsp; &nbsp;at Function.process_params (/home/hector/Escritorio/latam/proyecto final/proyecto_final/backend/node_modules/express/lib/router/index.js:421:3)\n            <br> &nbsp; &nbsp;at next (/home/hector/Escritorio/latam/proyecto final/proyecto_final/backend/node_modules/express/lib/router/index.js:280:10)\n        </pre>\n    </body>\n</html>"
+						},
+						{
+							"name": "sucessfull response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"16\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/inventory/inventario/",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"inventory",
+										"inventario",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "516"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"204-KGYlBlJER9JIj0KPfqW0Up+pOek\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 16:56:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"productos\": [\n        {\n            \"id\": 16,\n            \"nombre\": \"Silla Reclinable\",\n            \"categoria\": \"sillas\",\n            \"envio\": \"santiago\",\n            \"precio\": 50000,\n            \"stock\": 2,\n            \"id_usuario\": \"3fbc85f3-e3ab-46b5-827d-780cc0aa8c0a\",\n            \"id_pedido\": 1\n        },\n        {\n            \"id\": 17,\n            \"nombre\": \"Mause Pad\",\n            \"categoria\": \"mausepad\",\n            \"envio\": \"santiago\",\n            \"precio\": 15000,\n            \"stock\": 10,\n            \"id_usuario\": \"3fbc85f3-e3ab-46b5-827d-780cc0aa8c0a\",\n            \"id_pedido\": 2\n        },\n        {\n            \"id\": 18,\n            \"nombre\": \"Escritorio\",\n            \"categoria\": \"escritorio\",\n            \"envio\": \"santiago\",\n            \"precio\": 10000,\n            \"stock\": 2,\n            \"id_usuario\": \"3fbc85f3-e3ab-46b5-827d-780cc0aa8c0a\",\n            \"id_pedido\": 2\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "inventario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"silla\",\n    \"categoria\": \"sillas\",\n    \"envio\": \"santiago\",\n    \"precio\": \"20000\",\n    \"stock\": \"1\",\n    \"id_usuario\": \"3fbc85f3-e3ab-46b5-827d-780cc0aa8c0a\",\n    \"id_pedido\": null\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/inventory/inventario",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"inventory",
+								"inventario"
+							]
+						},
+						"description": "Ruta para agregar un nuevo producto al inventario."
+					},
+					"response": [
+						{
+							"name": "falled response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nombre\": \"silla\",\n    \"categoria\": \"\",\n    \"envio\": \"\",\n    \"precio\": \"\",\n    \"stock\": \"\",\n    \"id_usuario\": \"\",\n    \"is_pedido\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/inventory/inventario",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"inventory",
+										"inventario"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'none'"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1663"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 17:00:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"utf-8\">\n        <title>Error</title>\n    </head>\n    <body>\n        <pre>ReferenceError: req is not defined\n            <br> &nbsp; &nbsp;at /home/hector/Escritorio/latam/proyecto final/proyecto_final/backend/src/server/Routes/inventoryRoutes.js:29:17\n            <br> &nbsp; &nbsp;at Layer.handle [as handle_request] (/home/hector/Escritorio/latam/proyecto final/proyecto_final/backend/node_modules/express/lib/router/layer.js:95:5)\n            <br> &nbsp; &nbsp;at next (/home/hector/Escritorio/latam/proyecto final/proyecto_final/backend/node_modules/express/lib/router/route.js:144:13)\n            <br> &nbsp; &nbsp;at Route.dispatch (/home/hector/Escritorio/latam/proyecto final/proyecto_final/backend/node_modules/express/lib/router/route.js:114:3)\n            <br> &nbsp; &nbsp;at Layer.handle [as handle_request] (/home/hector/Escritorio/latam/proyecto final/proyecto_final/backend/node_modules/express/lib/router/layer.js:95:5)\n            <br> &nbsp; &nbsp;at /home/hector/Escritorio/latam/proyecto final/proyecto_final/backend/node_modules/express/lib/router/index.js:284:15\n            <br> &nbsp; &nbsp;at Function.process_params (/home/hector/Escritorio/latam/proyecto final/proyecto_final/backend/node_modules/express/lib/router/index.js:346:12)\n            <br> &nbsp; &nbsp;at next (/home/hector/Escritorio/latam/proyecto final/proyecto_final/backend/node_modules/express/lib/router/index.js:280:10)\n            <br> &nbsp; &nbsp;at Function.handle (/home/hector/Escritorio/latam/proyecto final/proyecto_final/backend/node_modules/express/lib/router/index.js:175:3)\n            <br> &nbsp; &nbsp;at router (/home/hector/Escritorio/latam/proyecto final/proyecto_final/backend/node_modules/express/lib/router/index.js:47:12)\n        </pre>\n    </body>\n</html>"
+						},
+						{
+							"name": "sucessfull response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nombre\": \"silla\",\n    \"categoria\": \"sillas\",\n    \"envio\": \"santiago\",\n    \"precio\": \"20000\",\n    \"stock\": \"1\",\n    \"id_usuario\": \"3fbc85f3-e3ab-46b5-827d-780cc0aa8c0a\",\n    \"id_pedido\": null\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/inventory/inventario",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"inventory",
+										"inventario"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "175"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"af-/jiDEIvr8HiSFIHnaQPRTa3bE5U\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 18:05:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"producto\": [\n        {\n            \"id\": 33,\n            \"nombre\": \"silla\",\n            \"categoria\": \"sillas\",\n            \"envio\": \"santiago\",\n            \"precio\": 20000,\n            \"stock\": 1,\n            \"id_usuario\": \"3fbc85f3-e3ab-46b5-827d-780cc0aa8c0a\",\n            \"id_pedido\": null\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "inventario/:id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Nuevo nombre de producto\",\n    \"categoria\": \"Nueva categoría\",\n    \"envio\": \"Nuevo lugar de envío\",\n    \"precio\": 25000,\n    \"stock\": 5,\n    \"id_usuario\": \"3fbc85f3-e3ab-46b5-827d-780cc0aa8c0a\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/inventory/inventario/",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"inventory",
+								"inventario",
+								""
+							]
+						},
+						"description": "Ruta para actualizar la información de un producto en el inventario."
+					},
+					"response": [
+						{
+							"name": "sucessfull response",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nombre\": \"Nuevo nombre de producto\",\n    \"categoria\": \"Nueva categoría\",\n    \"envio\": \"Nuevo lugar de envío\",\n    \"precio\": 25000,\n    \"stock\": 5,\n    \"id_usuario\": \"3fbc85f3-e3ab-46b5-827d-780cc0aa8c0a\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/inventory/inventario/16",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"inventory",
+										"inventario",
+										"16"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "214"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d6-+QU6oeFiJOY74/sDYiwIbjgBZAM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 18:17:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"producto\": [\n        {\n            \"id\": 16,\n            \"nombre\": \"Nuevo nombre de producto\",\n            \"categoria\": \"Nueva categoría\",\n            \"envio\": \"Nuevo lugar de envío\",\n            \"precio\": 25000,\n            \"stock\": 5,\n            \"id_usuario\": \"3fbc85f3-e3ab-46b5-827d-780cc0aa8c0a\",\n            \"id_pedido\": 1\n        }\n    ]\n}"
+						},
+						{
+							"name": "404",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nombre\": \"Nuevo nombre de producto\",\n    \"categoria\": \"Nueva categoría\",\n    \"envio\": \"Nuevo lugar de envío\",\n    \"precio\": 25000,\n    \"stock\": 5,\n    \"id_usuario\": \"3fbc85f3-e3ab-46b5-827d-780cc0aa8c0a\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/inventory/inventario/",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"inventory",
+										"inventario",
+										""
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"47-T6sJ6TV2CChjNTcXoyMW7k4VdjA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 18:18:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 404,\n    \"message\": \"La ruta no se encuentra en este sistema solar.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "inventario/:id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Nuevo nombre de producto\",\n    \"categoria\": \"Nueva categoría\",\n    \"envio\": \"Nuevo lugar de envío\",\n    \"precio\": 25000,\n    \"stock\": 5,\n    \"id_usuario\": \"3fbc85f3-e3ab-46b5-827d-780cc0aa8c0a\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/inventory/inventario/16",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"inventory",
+								"inventario",
+								"16"
+							]
+						},
+						"description": "Ruta para eliminar un producto del inventario."
+					},
+					"response": [
+						{
+							"name": "404",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/inventory/inventario/",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"inventory",
+										"inventario",
+										""
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"47-T6sJ6TV2CChjNTcXoyMW7k4VdjA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 18:19:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 404,\n    \"message\": \"La ruta no se encuentra en este sistema solar.\"\n}"
+						},
+						{
+							"name": "sucesfull response",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nombre\": \"Nuevo nombre de producto\",\n    \"categoria\": \"Nueva categoría\",\n    \"envio\": \"Nuevo lugar de envío\",\n    \"precio\": 25000,\n    \"stock\": 5,\n    \"id_usuario\": \"3fbc85f3-e3ab-46b5-827d-780cc0aa8c0a\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/inventory/inventario/16",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"inventory",
+										"inventario",
+										"16"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "47"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f-rb/qnztBAYIE9Y/la3H0UlTIsDE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 18:24:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Producto eliminado correctamente.\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Para la tabla inventario"
+		}
+	]
+}

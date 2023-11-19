@@ -260,7 +260,7 @@ CREATE TABLE usuarios (
     PRIMARY KEY(id)
 );
 
-## tabla para las pedidos
+## Tabla para las pedidos
 
 CREATE TABLE pedidos (
     id              SERIAL,
@@ -271,7 +271,7 @@ CREATE TABLE pedidos (
     PRIMARY KEY(id)
 );
 
-## tabla de inventario
+## Tabla de inventario
 
 CREATE TABLE inventario (
     id         SERIAL,
@@ -285,7 +285,7 @@ CREATE TABLE inventario (
     PRIMARY KEY(id)
 );
 
-## tabla para los favoritos
+## Tabla para los favoritos
 
 CREATE TABLE favoritos (
     id              SERIAL,
@@ -295,7 +295,7 @@ CREATE TABLE favoritos (
     PRIMARY KEY(id)
 );
 
-## tabla para guardar la url de las imagenes
+## Tabla para guardar la url de las imagenes
 
 CREATE TABLE imagenes_producto (
     id            SERIAL,
