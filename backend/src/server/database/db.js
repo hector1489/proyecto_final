@@ -18,7 +18,7 @@ const db = (query, values) => {
         .query(query, values)
         .then(({ rows }) => rows)
         .catch(({ code, message }) => {
-            const error = { status: 'ERROR', code, message };
+            const error = { status: '[ERROR]', code, message };
             throw error;
         });
 };

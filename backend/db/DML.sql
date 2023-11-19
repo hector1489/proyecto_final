@@ -1,8 +1,8 @@
 -- Para la tabla usuarios
 INSERT INTO usuarios (id, email, pass, es_admin)
 VALUES
-    (DEFAULT, 'usuario1@example.com', '123456', true),
-    (DEFAULT, 'usuario2@example.com', '123456', false);
+    (DEFAULT, 'usuario1@example.com', '$2a$10$3och3OWK/WWmr7wQvyJwU.YA/QeIOZJxOt9hVa3TV1qeUA9IyqbsK', true);
+
 
 -- Para la tabla inventario
 INSERT INTO inventario (id, nombre, categoria, envio, precio, stock)
