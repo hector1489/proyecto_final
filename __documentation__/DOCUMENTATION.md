@@ -7,8 +7,6 @@
 Proyecto Final para Desafíos Latam. Página web de e-commerce para la venta de productos de oficina.
 diseño y prototipo.
 
-<span>Recordar reparar, el pass a la db esta llegando undifined, revisar: variables de entorno,usuarios.dao y utils. / antes de intentar sin dotenv. </span>
-
 ## Autor
 
 Hector Gonzalez P.
@@ -300,125 +298,8 @@ CREATE TABLE imagenes_producto (
 
 5. Diseñar el contrato de datos de la API REST.
 
-## Autenticación :
+URL postman :
 
-Iniciar Sesión (POST /login).
-
-ENTRADA :
-
-    email: usuario@dominio.com,
-    pass: contraseña.
-
-
-SALIDA EXISTOSA :
-
-    token : token_de_autenticacion.
-
-ERROR:
-
-    code : 401,
-    message : Credenciales_inválidas.
-
-
-## Usuarios :
-
-# Obtener Todos los Usuarios (GET /usuarios)
-
-Requieren Token de Administrador.
-
-SALIDA EXISTOSA :
-
-users :
-
-    id: uuid,
-    email: usuario@dominio.com,
-    es_admin: false.
-
-ERROR :
-
-    code : 401,
-    message : No tienes permisos para realizar esta acción.
-
-# Obtener Usuario por Email (GET /usuarios)
-
-Requiere Token de Administrador.
-
-SALIDA EXISTOSA :
-
-users :
-
-    id: uuid,
-    email: usuario@dominio.com,
-    es_admin: false.
-
-
-ERROR :
-
-    code : 401,
-    message : No tienes permisos para realizar esta acción.
-
-# Crear Nuevo Usuario (POST /usuarios)
-
-ENTRADA :
-
-    email : usuario@dominio.com,
-    pass : contraseña,
-    es_admin : false.
-
-
-SALIDA EXISTOSA :
-
-user:
-
-    id: uuid,
-    email: usuario@dominio.com,
-    es_admin: false.
-
-ERROR :
-
-    code : 500,
-    message : Error interno del servidor.
-
-# Actualizar Usuario (PUT /usuarios/:id)
-
-Requiere Token de Usuario Autenticado o Administrador.
-
-ENTRADA :
-
-    email : nuevo_email@dominio.com,
-    pass : nueva_contraseña,
-    es_admin : true.
-
-SALIDA EXISTOSA :
-
-user :
-
-    id: uuid,
-    email: nuevo_email@dominio.com,
-    es_admin: true.
-
-ERROR :
-
-    code: 401,
-    message: No tienes permisos para realizar esta acción.
-
-
-# Eliminar Usuario (DELETE /usuarios/:id)
-
-Requiere Token de Administrador
-
-SALIDA EXISTOSA :
-
-user :
-
-    id : uuid,
-    email : usuario_eliminado@dominio.com,
-    es_admin : false.
-
-ERROR :
-
-    code : 401,
-    message : No tienes permisos para realizar esta acción.
-
+https://documenter.getpostman.com/view/30714067/2s9Ye8fuRx
 
 

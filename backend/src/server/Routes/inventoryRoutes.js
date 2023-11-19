@@ -25,21 +25,21 @@ inventoryRoutes.get('/inventario/:id', (_, res) => {
 })
 
 //Endpoint para agregar un nuevo producto al inventario.
-inventoryRoutes.post('/inventario', (_, res) => {
+inventoryRoutes.post('/inventario', (req, res) => {
     addProducto(req.body)
         .then((producto) => res.status(201).json({ producto }))
         .catch((error) => res.status(500).json(error))
 })
 
 //Endpoint para actualizar la información de un producto en el inventario.
-inventoryRoutes.put('/inventario/:id', (_, res) => {
+inventoryRoutes.put('/inventario/:id', (req, res) => {
     updateProducto(req.params.id, req.body)
         .then((producto) => res.status(200).json({ producto }))
         .catch((error) => res.status(500).json(error))
 })
 
 //Endpoint para eliminar un producto del inventario.
-inventoryRoutes.delete('/inventario/:id', (_, res) => {
+inventoryRoutes.delete('/inventario/:id', (req, res) => {
     deleteProducto(req.params.id)
         .then(() => res.status(200).json({ message: 'Producto eliminado correctamente.' }))
         .catch((error) => res.status(500).json(error));

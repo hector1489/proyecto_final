@@ -1,15 +1,19 @@
 -- Para la tabla usuarios
 INSERT INTO usuarios (id, email, pass, es_admin)
 VALUES
-    (DEFAULT, 'usuario1@example.com', '$2a$10$3och3OWK/WWmr7wQvyJwU.YA/QeIOZJxOt9hVa3TV1qeUA9IyqbsK', true);
+    (DEFAULT, 'usuario1@example.com', '123456', true),
+    (DEFAULT, 'usuario2@example.com', '123456', true);
 
+-- Insertar algunos datos en la tabla pedidos
+INSERT INTO pedidos (id_usuario, estado, direccion_envio)
+VALUES
+    ('3fbc85f3-e3ab-46b5-827d-780cc0aa8c0a', 'En proceso', 'santiago'),
+    ('3fbc85f3-e3ab-46b5-827d-780cc0aa8c0a', 'Entregado', 'santiago');
 
 -- Para la tabla inventario
-INSERT INTO inventario (id, nombre, categoria, envio, precio, stock)
+INSERT INTO inventario (id, nombre, categoria, envio, precio, stock, id_usuario, id_pedido)
 VALUES
-    (DEFAULT, 'Silla Reclinable', 'sillas', 'pais', 20000 , 2),
-    (DEFAULT, 'Silla AURUS', 'sillas', 'pais', 15000 , 5),
-    (DEFAULT, 'Mause Pad', 'mausepad', 'pais', 12000 , 10),
-    (DEFAULT, 'Mause Lug', 'mause', 'pais', 25000 , 4),
-    (DEFAULT, 'Microfono Inalambrico', 'microfono', 'pais', 30000 , 4),
-    (DEFAULT, 'Escritorio', 'escritorio', 'pais', 40000 , 2);
+    (DEFAULT, 'Silla Reclinable', 'sillas', 'santiago', 50000 , 2, '3fbc85f3-e3ab-46b5-827d-780cc0aa8c0a', 1),
+    (DEFAULT, 'Mause Pad', 'mausepad', 'santiago', 15000 , 10, '3fbc85f3-e3ab-46b5-827d-780cc0aa8c0a', 2),
+    (DEFAULT, 'Escritorio', 'escritorio', 'santiago', 10000 , 2, '3fbc85f3-e3ab-46b5-827d-780cc0aa8c0a', 2);
+
