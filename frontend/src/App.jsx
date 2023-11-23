@@ -4,8 +4,11 @@ import DataContext from './context/dataContext'
 import './App.css'
 import NavbarComponent from './components/Navbar'
 import Home from './views/Home'
+import Login from './views/Login'
 import NotFound from './views/NotFound'
 import Contacts from './views/Contacts'
+import Cart from './views/Cart'
+import AllProducts from './views/AllProducts'
 
 const urlBaseServer = 'http://localhost:3000'
 
@@ -15,7 +18,7 @@ function App() {
 
   /*useEffect(() => {
     fetchData(`${urlBaseServer}`)
-  }, [])*/
+  }, [])
 
   const fetchData = async () => {
     try {
@@ -25,7 +28,7 @@ function App() {
     } catch (error) {
       console.error('Error al obtener datos del servidor:', error)
     }
-  }
+  }*/
 
   const addToCart = ({ id, price, name, img }) => {
     setShopCart((prevShopCart) => {
@@ -86,14 +89,15 @@ function App() {
   return (
     <DataContext.Provider value={globalState}>
       <BrowserRouter>
-        <div className="App">
           <NavbarComponent />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="*" element={<NotFound />} />
+            <Route path="/Login" element={<Login />} />
+            <Route path="/AllProducts" element={<AllProducts />} />
             <Route path="/Contacts" element={<Contacts />} />
+            <Route path="/Cart" element={<Cart />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
-        </div>
       </BrowserRouter>
     </DataContext.Provider>
   )

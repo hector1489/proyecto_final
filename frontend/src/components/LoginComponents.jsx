@@ -3,11 +3,11 @@ import { Form, Button } from 'react-bootstrap'
 
 function LoginComponents() {
   return (
-    <div className='box-signup-login'>
-      <div className='box-login'>
+    <div className='box-signup-login d-flex flex-md-row flex-column'>
+      <div className='box-login col-md-6'>
         <Form>
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
+            <Form.Label className='fw-bold text-uppercase'>login</Form.Label>
             <Form.Control type="email" placeholder="Enter email" />
             <Form.Text className="text-muted">
               We'll never share your email with anyone else.
@@ -27,10 +27,10 @@ function LoginComponents() {
         </Form>
       </div>
 
-      <div className='box-signup'>
+      <div className='box-login col-md-6'>
         <Form>
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
+            <Form.Label className='fw-bold text-uppercase'>signup</Form.Label>
             <Form.Control type="email" placeholder="Enter email" />
             <Form.Text className="text-muted">
               We'll never share your email with anyone else.

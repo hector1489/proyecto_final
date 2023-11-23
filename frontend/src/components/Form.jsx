@@ -3,8 +3,8 @@ import { Form, Button } from 'react-bootstrap'
 const form = () => {
 
     return (
-        <Form>
-          <Form.Group className="mb-3 bg-dark">
+        <Form className='box-form'>
+          <Form.Group className="mb-3 form-group bg-dark">
             <Form.Label className="my-4 fw-bold text-white text-decoration-none text-uppercase">
               Contacto
             </Form.Label>

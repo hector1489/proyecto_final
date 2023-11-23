@@ -2,7 +2,9 @@
 const Gallery = () => {
 
     return (
-        <h4>aqui van la offers</h4>
+        <div className="box-gallery">
+            <h4>galeria de ofertas</h4>
+        </div>
     )
 }
 
