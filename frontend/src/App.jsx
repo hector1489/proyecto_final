@@ -10,32 +10,22 @@ import Contacts from './views/Contacts'
 import Cart from './views/Cart'
 import AllProducts from './views/AllProducts'
 
-const urlBaseServer = 'http://localhost:3000'
+import dataJson from './data.json'
 
 function App() {
   const [data, setData] = useState([])
   const [shopCart, setShopCart] = useState([])
 
-  /*useEffect(() => {
-    fetchData(`${urlBaseServer}`)
+  useEffect(() => {
+    setData(dataJson)
   }, [])
-
-  const fetchData = async () => {
-    try {
-      const response = await fetch(`${urlBaseServer}/api/products`)
-      const jsonData = await response.json()
-      setData(jsonData)
-    } catch (error) {
-      console.error('Error al obtener datos del servidor:', error)
-    }
-  }*/
 
   const addToCart = ({ id, price, name, img }) => {
     setShopCart((prevShopCart) => {
       const existingProduct = prevShopCart.find((item) => item.id === id)
 
       if (existingProduct) {
-        return prevShopCart.map((item) =>
+        return prevShopCart?.map((item) =>
           item.id === id ? { ...item, count: item.count + 1 } : item
         )
       } else {
@@ -58,9 +48,9 @@ function App() {
         item.id === productId
           ? { ...item, count: item.count - 1 }
           : item
-      )
+      );
 
-      return updatedCart.filter((item) => item.count > 0)
+      return updatedCart.filter((item) => item.count > 0);
     })
   }
 
@@ -71,12 +61,28 @@ function App() {
   }
 
   const formatNumber = (number) => {
-    return number.toLocaleString()
+    if (typeof number === 'number' && !isNaN(number)) {
+      return number.toLocaleString()
+    } else {
+      return 'Precio no disponible'
+    }
+  }
+
+  const addToFavorites = (userId, productId) => {
+    const currentDate = new Date().toISOString()
+    const isAlreadyInFavorites = data?.favoritos.some(favorite => favorite.id_usuario === userId && favorite.id_inventario === productId)
+
+    if (!isAlreadyInFavorites) {
+      const newFavorites = [...data?.favoritos, { id_usuario: userId, id_inventario: productId, fecha_agregado: currentDate }]
+      setData((prevData) => ({ ...prevData, favoritos: newFavorites }))
+      console.log("Añadido a favoritos:", newFavorites)
+    } else {
+      console.log("El producto ya está en favoritos")
+    }
   }
 
   const globalState = {
     data,
-    setData,
     shopCart,
     setShopCart,
     addToCart,
@@ -84,20 +90,21 @@ function App() {
     decrease,
     removeFromCart,
     formatNumber,
+    addToFavorites
   }
 
   return (
     <DataContext.Provider value={globalState}>
       <BrowserRouter>
-          <NavbarComponent />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/Login" element={<Login />} />
-            <Route path="/AllProducts" element={<AllProducts />} />
-            <Route path="/Contacts" element={<Contacts />} />
-            <Route path="/Cart" element={<Cart />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+        <NavbarComponent />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/AllProducts" element={<AllProducts />} />
+          <Route path="/Contacts" element={<Contacts />} />
+          <Route path="/Cart" element={<Cart />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </BrowserRouter>
     </DataContext.Provider>
   )

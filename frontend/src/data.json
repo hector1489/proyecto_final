@@ -1,0 +1,80 @@
+{
+    "usuarios": [
+        {
+            "id": "123e4567-e89b-12d3-a456-426614174001",
+            "email": "usuario1@example.com",
+            "pass": "contrasena123",
+            "es_admin": false
+        },
+        {
+            "id": "223e4567-e89b-12d3-a456-426614174002",
+            "email": "usuario2@example.com",
+            "pass": "otracontrasena456",
+            "es_admin": true
+        }
+    ],
+    "pedidos": [
+        {
+            "id": 1,
+            "id_usuario": "123e4567-e89b-12d3-a456-426614174001",
+            "fecha": "2023-11-23T12:34:56Z",
+            "estado": "En proceso",
+            "direccion_envio": "Calle 123, Ciudad"
+        },
+        {
+            "id": 2,
+            "id_usuario": "223e4567-e89b-12d3-a456-426614174002",
+            "fecha": "2023-11-24T08:45:00Z",
+            "estado": "Entregado",
+            "direccion_envio": "Avenida XYZ, Otra Ciudad"
+        }
+    ],
+    "inventario": [
+        {
+            "id": 1,
+            "nombre": "Sillas",
+            "categoria": "Muebles",
+            "envio": "Estándar",
+            "precio": 30000,
+            "stock": 10,
+            "id_usuario": "123e4567-e89b-12d3-a456-426614174001",
+            "id_pedido": 1
+        },
+        {
+            "id": 2,
+            "nombre": "Mesas",
+            "categoria": "Muebles",
+            "envio": "Express",
+            "precio": 50000,
+            "stock": 5,
+            "id_usuario": "223e4567-e89b-12d3-a456-426614174002",
+            "id_pedido": 2
+        }
+    ],
+    "favoritos": [
+        {
+            "id": 1,
+            "id_usuario": "123e4567-e89b-12d3-a456-426614174001",
+            "id_inventario": 1,
+            "fecha_agregado": "2023-11-23T15:00:00Z"
+        },
+        {
+            "id": 2,
+            "id_usuario": "223e4567-e89b-12d3-a456-426614174002",
+            "id_inventario": 2,
+            "fecha_agregado": "2023-11-24T10:30:00Z"
+        }
+    ],
+    "imagenes_producto": [
+        {
+            "id": 1,
+            "id_inventario": 1,
+            "url": "src/assets/img/silla1.jpg"
+        },
+        {
+            "id": 2,
+            "id_inventario": 2,
+            "url": "src/assets/img/escritorio-gamer.jpg"
+        }
+    ]
+}

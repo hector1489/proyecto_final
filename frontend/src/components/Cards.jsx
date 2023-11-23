@@ -1,20 +1,44 @@
+import { useContext } from "react"
 import { Card, Button } from 'react-bootstrap'
+import DataContext from '../context/dataContext'
 
+function CardComponents() {
+  const { data, addToCart, formatNumber, addToFavorites } = useContext(DataContext)
 
-function CradComponents() {
+  const handleAddToFavorites = (id) => {
+    const userId = "123e4567-e89b-12d3-a456-426614174001"
+    addToFavorites(userId, id)
+  }
+
+  const getImageUrl = (itemId) => {
+    const imagen = data?.imagenes_producto.find((img) => img.id_inventario === itemId)
+    return imagen ? imagen.url : ''
+  }
+
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
-      <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
-      </Card.Body>
-    </Card>
+    <>
+      {data?.inventario?.map((item) => (
+        <Card key={item?.id} className="p-2">
+          <Card.Img variant="top" src={getImageUrl(item?.id)} />
+          <Card.Body>
+            <div className="ms-auto">
+              <Card.Title style={{ textTransform: 'capitalize' }}>{item?.nombre}</Card.Title>
+              <Card.Text className="fw-bold fs-5">
+                ${formatNumber(item?.precio)}
+              </Card.Text>
+              <Button variant="success" className="me-3" onClick={() => addToCart(item)}>
+                add 🛒
+              </Button>
+              <Button variant="info text-white text-decoration-none" onClick={() => handleAddToFavorites(item?.id)}>
+                add favorites
+              </Button>
+            </div>
+          </Card.Body>
+        </Card>
+      ))}
+    </>
   )
 }
 
-export default CradComponents
+export default CardComponents
+

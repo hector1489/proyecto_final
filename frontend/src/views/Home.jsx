@@ -6,8 +6,7 @@ const Home = () => {
     return (
         <div className='box-home'>
             <Gallery />
-            <div className="box-home-cards">
-                <p>filtros</p>
+            <div className='box-AllProducts-cards d-flex'>
                 <Cards />
             </div>
             <Footer />
