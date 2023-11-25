@@ -1,9 +1,25 @@
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Card, Button } from 'react-bootstrap'
 import DataContext from '../context/dataContext'
+import { ENDPOINT } from "../config/constans"
 
 function CardComponents() {
-  const { data, addToCart, formatNumber, addToFavorites } = useContext(DataContext)
+  const { addToCart, formatNumber, addToFavorites } = useContext(DataContext)
+  const [inventoryData, setInventoryData] = useState([])
+
+  useEffect(() => {
+    const fetchInventory = async () => {
+      try {
+        const response = await fetch(ENDPOINT.inventory)
+        const result = await response.json()
+        setInventoryData(result)
+      } catch (error) {
+        console.error("Error fetching inventory data:", error)
+      }
+    };
+
+    fetchInventory()
+  }, [])
 
   const handleAddToFavorites = (id) => {
     const userId = "123e4567-e89b-12d3-a456-426614174001"
@@ -11,13 +27,13 @@ function CardComponents() {
   }
 
   const getImageUrl = (itemId) => {
-    const imagen = data?.imagenes_producto.find((img) => img.id_inventario === itemId)
-    return imagen ? imagen.url : ''
+    const imagen = inventoryData.productos.find((item) => item.id === itemId)?.url
+    return imagen || ''
   }
 
   return (
     <>
-      {data?.inventario?.map((item) => (
+      {inventoryData?.productos?.map((item) => (
         <Card key={item?.id} className="p-2">
           <Card.Img variant="top" src={getImageUrl(item?.id)} />
           <Card.Body>

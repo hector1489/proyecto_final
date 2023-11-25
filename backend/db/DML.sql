@@ -17,3 +17,11 @@ VALUES
     (DEFAULT, 'Mause Pad', 'mausepad', 'santiago', 15000 , 10, '3fbc85f3-e3ab-46b5-827d-780cc0aa8c0a', 2),
     (DEFAULT, 'Escritorio', 'escritorio', 'santiago', 10000 , 2, '3fbc85f3-e3ab-46b5-827d-780cc0aa8c0a', 2);
 
+-- Insertar registros en la tabla de imágenes
+INSERT INTO imagenes_producto (id_inventario, url)
+VALUES
+    ((SELECT id FROM inventario WHERE nombre = 'silla' limit 1), 'src/assets/img/silla1.jpg');
+
+INSERT INTO imagenes_producto (id_inventario, url)
+VALUES
+    ((SELECT id FROM inventario WHERE nombre = 'Escritorio'), 'src/assets/img/escritorio-gamer.jpg');

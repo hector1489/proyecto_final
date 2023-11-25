@@ -1,52 +1,65 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import useUsers from '../../src/hooks/useUsers'
 import useAdmins from '../../src/hooks/useAdmins'
+import { ENDPOINT } from '../config/constans'
 
 
 function LoginComponents() {
-  const { getUsers, setUsers } = useUsers()
-  const { getAdmins, setAdmins } = useAdmins()
+  const { user, setUser } = useState({ email: '', password: '' });
+  const { getAdmins, setAdmins } = useAdmins();
+
+  useEffect(() => {
+    const fetchLogin = async () => {
+      try {
+        const response = await fetch(ENDPOINT.users);
+        const result = await response.json();
+        setLoginData(result);
+        const admins = await getAdmins();
+        setAdmins(admins);
+      } catch (error) {
+        console.error("Error fetching users data:", error)
+      }
+    };
+
+    fetchLogin();
+  }, [getAdmins, setAdmins])
 
   const [loginData, setLoginData] = useState({
     email: '',
-    password: ''
-  })
+    password: '',
+  });
 
   const [signupData, setSignupData] = useState({
     email: '',
     password: '',
-    repeatPassword: ''
+    repeatPassword: '',
   })
 
   const handleLoginSubmit = (event) => {
-    event.preventDefault();
-    // Aquí enviar los datos de login al servidor
-    console.log('Login data submitted:', loginData)
-    // Falta agrega lógica para enviar los datos al servidor y manejar la respuesta
+    event.preventDefault()
+    
   }
 
   const handleSignupSubmit = (event) => {
-    event.preventDefault();
-    // Aquí enviar los datos de signup al servidor
-    console.log('Signup data submitted:', signupData)
-    // Falta agrega lógica para enviar los datos al servidor y manejar la respuesta
+    event.preventDefault()
+   
+    console.log('Signup data submitted:', signupData);
   }
 
   const handleLoginChange = (event) => {
     setLoginData({
       ...loginData,
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     })
   }
 
   const handleSignupChange = (event) => {
     setSignupData({
       ...signupData,
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     })
   }
-
   return (
     <div className='box-signup-login d-flex flex-md-row flex-column'>
       <div className='box-login col-md-6'>

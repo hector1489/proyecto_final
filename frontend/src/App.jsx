@@ -10,14 +10,23 @@ import Contacts from './views/Contacts'
 import Cart from './views/Cart'
 import AllProducts from './views/AllProducts'
 
-import dataJson from './data.json'
+import { URLBASE } from './config/constans'
 
 function App() {
   const [data, setData] = useState([])
   const [shopCart, setShopCart] = useState([])
 
   useEffect(() => {
-    setData(dataJson)
+    const fetchData = async () => {
+      try {
+        const response = await fetch(URLBASE)
+        const result = await response.json();
+        setData(result)
+      } catch (error) {
+        console.error("Error fetching data:", error)
+      }
+    };
+    fetchData()
   }, [])
 
   const addToCart = ({ id, price, name, img }) => {
