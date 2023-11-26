@@ -1,11 +1,10 @@
+// useUsers.js
 import { useState } from 'react'
 
 const useUsers = () => {
-  const [users, setUsers] = useState(false)
+  const [userData, setUserData] = useState(null)
 
-  const setUsersData = (userData) => setUsers(userData)
-
-  return { getUsers: users, setUsers: setUsersData }
+  return { getUserData: userData, setUserData }
 }
 
 export default useUsers

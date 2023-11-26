@@ -19,6 +19,7 @@ import { URLBASE } from './config/constans'
 function App() {
   const [data, setData] = useState([])
   const [shopCart, setShopCart] = useState([])
+  const [userData, setUserData] = useState(null)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -103,7 +104,9 @@ function App() {
     decrease,
     removeFromCart,
     formatNumber,
-    addToFavorites
+    addToFavorites,
+    userData,
+    setUserData
   }
 
   return (

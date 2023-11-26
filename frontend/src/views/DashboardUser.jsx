@@ -35,7 +35,7 @@ const DashboardUser = () => {
           </div>
         </Col>
         <Col>
-          <div className="half-page">Contenido de la segunda mitad</div>
+          <div className="half-page">Aqui van los favorito y los pedidos</div>
         </Col>
       </Row>
     </Container>

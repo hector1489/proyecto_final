@@ -1,7 +1,7 @@
 
 const DashboardAdmin = () => {
     return (
-        <h4>dashboard Admin</h4>
+        <h4>dashboard Admin , ESTA RUTA AUN NO ESTA LISTA</h4>
     )
 }
 
