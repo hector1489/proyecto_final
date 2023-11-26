@@ -4,13 +4,14 @@ import DataContext from './context/dataContext'
 import './App.css'
 import NavbarComponent from './components/Navbar'
 import Home from './views/Home'
-import Login from './views/Login'
 import NotFound from './views/NotFound'
 import Contacts from './views/Contacts'
 import Cart from './views/Cart'
 import AllProducts from './views/AllProducts'
+import LoginSignup from './views/loginSignup'
 
 import { URLBASE } from './config/constans'
+
 
 function App() {
   const [data, setData] = useState([])
@@ -108,7 +109,7 @@ function App() {
         <NavbarComponent />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/Login" element={<Login />} />
+          <Route path="/Login" element={<LoginSignup />} />
           <Route path="/AllProducts" element={<AllProducts />} />
           <Route path="/Contacts" element={<Contacts />} />
           <Route path="/Cart" element={<Cart />} />

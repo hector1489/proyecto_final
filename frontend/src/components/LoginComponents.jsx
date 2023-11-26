@@ -1,144 +1,90 @@
-import { useState, useEffect } from 'react'
+import { useState, useContext } from 'react'
 import { Form, Button } from 'react-bootstrap'
-import useUsers from '../../src/hooks/useUsers'
-import useAdmins from '../../src/hooks/useAdmins'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import DataContext from '../context/dataContext'
+import useAdmins from '../hooks/useAdmins'
+import useUsers from '../hooks/useUsers'
 import { ENDPOINT } from '../config/constans'
 
+const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+const initialForm = { email: 'docente@desafiolatam.com', password: '123456' }
 
 function LoginComponents() {
-  const { user, setUser } = useState({ email: '', password: '' });
-  const { getAdmins, setAdmins } = useAdmins();
+  const navigate = useNavigate()
+  const [user, setUser] = useState(initialForm)
+  const { setDeveloper } = useContext(DataContext)
+  const { setAdmins } = useAdmins()
+  const { setUsers } = useUsers()
 
-  useEffect(() => {
-    const fetchLogin = async () => {
-      try {
-        const response = await fetch(ENDPOINT.users);
-        const result = await response.json();
-        setLoginData(result);
-        const admins = await getAdmins();
-        setAdmins(admins);
-      } catch (error) {
-        console.error("Error fetching users data:", error)
-      }
-    };
+  const handleUser = (event) => setUser({ ...user, [event.target.name]: event.target.value })
 
-    fetchLogin();
-  }, [getAdmins, setAdmins])
-
-  const [loginData, setLoginData] = useState({
-    email: '',
-    password: '',
-  });
-
-  const [signupData, setSignupData] = useState({
-    email: '',
-    password: '',
-    repeatPassword: '',
-  })
-
-  const handleLoginSubmit = (event) => {
+  const handleForm = (event) => {
     event.preventDefault()
-    
+
+    if (!user.email.trim() || !user.password.trim()) {
+      return window.alert('Email y contraseña son obligatorios.')
+    }
+
+    if (!emailRegex.test(user.email)) {
+      return window.alert('El formato del email no es correcto.')
+    }
+
+    axios.post(ENDPOINT.login, user)
+      .then(({ data }) => {
+        window.sessionStorage.setItem('token', data.token)
+        window.alert('Usuario identificado con éxito.')
+        setDeveloper({})
+
+        if (user.email === 'admin@example.com') {
+          setAdmins(true)
+        } else {
+          setUsers(true)
+        }
+
+        navigate('/perfil')
+      })
+      .catch(({ response: { data } }) => {
+        console.error(data)
+        window.alert(`${data.message}.`)
+      })
   }
 
-  const handleSignupSubmit = (event) => {
-    event.preventDefault()
-   
-    console.log('Signup data submitted:', signupData);
-  }
-
-  const handleLoginChange = (event) => {
-    setLoginData({
-      ...loginData,
-      [event.target.name]: event.target.value,
-    })
-  }
-
-  const handleSignupChange = (event) => {
-    setSignupData({
-      ...signupData,
-      [event.target.name]: event.target.value,
-    })
-  }
   return (
-    <div className='box-signup-login d-flex flex-md-row flex-column'>
       <div className='box-login col-md-6'>
-        <Form onSubmit={handleLoginSubmit}>
+        <Form onSubmit={handleForm}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label className='fw-bold text-uppercase'>login</Form.Label>
+            <Form.Label className='fw-bold text-uppercase'>Inicio de sesión</Form.Label>
             <Form.Control
               type="email"
-              placeholder="Enter email"
+              placeholder="Ingrese su correo electrónico"
               name="email"
-              value={loginData.email}
-              onChange={handleLoginChange}
+              value={user.email}
+              onChange={handleUser}
             />
             <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
+              Nunca compartiremos su correo electrónico con nadie más.
             </Form.Text>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
+            <Form.Label>Contraseña</Form.Label>
             <Form.Control
               type="password"
-              placeholder="Password"
+              placeholder="Contraseña"
               name="password"
-              value={loginData.password}
-              onChange={handleLoginChange}
+              value={user.password}
+              onChange={handleUser}
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Check me out" />
+            <Form.Check type="checkbox" label="Recuérdame" />
           </Form.Group>
           <Button variant="primary" type="submit">
-            Login
+            Iniciar sesión
           </Button>
         </Form>
       </div>
-
-      <div className='box-login col-md-6'>
-        <Form onSubmit={handleSignupSubmit}>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label className='fw-bold text-uppercase'>signup</Form.Label>
-            <Form.Control
-              type="email"
-              placeholder="Enter email"
-              name="email"
-              value={signupData.email}
-              onChange={handleSignupChange}
-            />
-            <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-            </Form.Text>
-          </Form.Group>
-
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Password"
-              name="password"
-              value={signupData.password}
-              onChange={handleSignupChange}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Repeat Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Password"
-              name="repeatPassword"
-              value={signupData.repeatPassword}
-              onChange={handleSignupChange}
-            />
-          </Form.Group>
-          <Button variant="primary" type="submit">
-            Signup
-          </Button>
-        </Form>
-      </div>
-    </div>
   )
 }
 

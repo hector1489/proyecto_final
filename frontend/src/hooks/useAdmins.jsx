@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 const useAdmins = () => {
-  const [admins, setAdmins] = useState(null)
+  const [admins, setAdmins] = useState(false)
 
   const setAdminsData = (adminData) => setAdmins(adminData)
 
@@ -9,4 +9,3 @@ const useAdmins = () => {
 }
 
 export default useAdmins
-

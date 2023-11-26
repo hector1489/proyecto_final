@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 const useUsers = () => {
-  const [users, setUsers] = useState(null)
+  const [users, setUsers] = useState(false)
 
   const setUsersData = (userData) => setUsers(userData)
 
