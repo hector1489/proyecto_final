@@ -9,6 +9,9 @@ import Contacts from './views/Contacts'
 import Cart from './views/Cart'
 import AllProducts from './views/AllProducts'
 import LoginSignup from './views/loginSignup'
+import DashboardUser from './views/DashboardUser'
+import DashboardAdmin from './views/DashboardAdmin'
+
 
 import { URLBASE } from './config/constans'
 
@@ -110,6 +113,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Login" element={<LoginSignup />} />
+          <Route path="/DashboardUser" element={<DashboardUser />} />
+          <Route path="/DashboardAdmin" element={<DashboardAdmin />} />
           <Route path="/AllProducts" element={<AllProducts />} />
           <Route path="/Contacts" element={<Contacts />} />
           <Route path="/Cart" element={<Cart />} />

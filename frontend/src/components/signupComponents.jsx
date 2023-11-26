@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
@@ -6,10 +6,10 @@ import { ENDPOINT } from '../config/constans'
 
 const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
 const initialForm = {
-  email: 'docente@desafiolatam.com',
-  password: '123456',
-  rol: 'Seleccione un rol',
-  language: 'Seleccione un Lenguage'
+  email: 'godUsopp@example.com',
+  pass: '',
+  confirmPassword: '',
+  es_admin: false,
 }
 
 const Register = () => {
@@ -18,39 +18,42 @@ const Register = () => {
 
   const handleSignupChange = (event) => {
     setSignupData({ ...signupData, [event.target.name]: event.target.value })
-  };
+  }
 
   const handleSignupSubmit = (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
-    if (
-      !signupData.email.trim() ||
-      !signupData.password.trim() ||
-      signupData.rol === 'Seleccione un rol' ||
-      signupData.language === 'Seleccione un Lenguage'
-    ) {
+    if (!signupData.email.trim() || !signupData.pass.trim() || !signupData.confirmPassword.trim()) {
       return window.alert('Todos los campos son obligatorios.')
     }
 
+    if (signupData.pass !== signupData.confirmPassword) {
+      return window.alert('Las contraseñas no coinciden.')
+    }
+
     if (!emailRegex.test(signupData.email)) {
-      return window.alert('El formato del email no es correcto!')
+      return window.alert('El formato del email no es correcto.')
     }
 
     axios
-      .post(ENDPOINT.users, signupData)
-      .then(() => {
+      .post(ENDPOINT.register, signupData)
+      .then((response) => {
+        const token = response.data.token
+        window.sessionStorage.setItem('token', token)
         window.alert('Usuario registrado con éxito.')
-        navigate('/login')
+        navigate('/DashboardUser')
       })
-      .catch(({ response: { data } }) => {
-        console.error(data);
-        window.alert(`${data.message}.`)
+      .catch((error) => {
+        console.error(error);
+        window.alert('Error al registrar usuario.')
       })
+
   }
+
 
   useEffect(() => {
     if (window.sessionStorage.getItem('token')) {
-      navigate('/perfil')
+      navigate('/DashboardUser')
     }
   }, [navigate])
 
@@ -76,19 +79,19 @@ const Register = () => {
           <Form.Control
             type="password"
             placeholder="Contraseña"
-            name="password"
-            value={signupData.password}
+            name="pass"
+            value={signupData.pass}
             onChange={handleSignupChange}
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicRepeatPassword">
-          <Form.Label>Repetir Contraseña</Form.Label>
+        <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
+          <Form.Label>Confirmar Contraseña</Form.Label>
           <Form.Control
             type="password"
-            placeholder="Repetir Contraseña"
-            name="repeatPassword"
-            value={signupData.repeatPassword}
+            placeholder="Confirmar Contraseña"
+            name="confirmPassword"
+            value={signupData.confirmPassword}
             onChange={handleSignupChange}
           />
         </Form.Group>

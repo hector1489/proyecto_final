@@ -19,7 +19,7 @@ userRoutes.post('/login', (req, res) => {
                 ? res.status(200).json({ token: jwtSign({ email: req.body.email }) })
                 : res.status(400).json({ code: 404, message: 'Resource not found.' })
         })
-        .catch((error) => res.status(500).json(error))
+        .catch((error) => res.status(500).json({ code: 500, message: 'Internal Server Error', error: error.message || 'Unknown Error' }))
 })
 
 // Endpoint para obtener un usuario por correo electrónico (requiere token)
