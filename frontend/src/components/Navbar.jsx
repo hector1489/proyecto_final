@@ -16,35 +16,35 @@ const NavbarComponent = () => {
 
   return (
 
-    <Navbar expand="lg" className="bg-dark">
-      <Container>
-        <Navbar.Brand className="navbar-icon fw-bold text-white text-decoration-none text-uppercase">
-          IT Dojo.
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" className="burguer-button" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
-            <NavLink to="/" className={setActiveClass}>
-              Home
-            </NavLink>
-            <NavLink to="/AllProducts" className={setActiveClass}>
-              Products
-            </NavLink>
-            <NavLink to="/Contacts" className={setActiveClass}>
-              Contacts
-            </NavLink>
-            <NavLink to="/Login" className={setActiveClass}>
-              Login/signup
-            </NavLink>
-            <NavLink to="/Cart" className={setActiveClass}>
-              <h4>
-                🛒 $ {formatNumber(calculateTotal())}
-              </h4>
-            </NavLink>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <Navbar expand="lg" className="box-navbar bg-dark">
+    <Container>
+      <Navbar.Brand className="navbar-icon fw-bold text-white text-decoration-none text-uppercase">
+        IT Dojo
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" className="burger-button" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="ms-auto">
+          <NavLink to="/" className="nav-link">
+            Home
+          </NavLink>
+          <NavLink to="/AllProducts" className="nav-link">
+            Products
+          </NavLink>
+          <NavLink to="/Contacts" className="nav-link">
+            Contacts
+          </NavLink>
+          <NavLink to="/Login" className="nav-link">
+            Login/Signup
+          </NavLink>
+          <NavLink to="/Cart" className="nav-link">
+            <div className="cart-icon">
+              🛒 <span className="cart-total">$ {formatNumber(calculateTotal())}</span>
+            </div>
+          </NavLink>
+        </Nav>
+      </Navbar.Collapse>
+    </Container>
+  </Navbar>
 
   )
 }
