@@ -34,7 +34,7 @@ function App() {
     fetchData()
   }, [])
 
-  const addToCart = ({ id, price, name, img }) => {
+  const addToCart = ({ id, precio, nombre, img }) => {
     setShopCart((prevShopCart) => {
       const existingProduct = prevShopCart.find((item) => item.id === id)
 
@@ -43,7 +43,7 @@ function App() {
           item.id === id ? { ...item, count: item.count + 1 } : item
         )
       } else {
-        return [...prevShopCart, { id, price, name, img, count: 1 }]
+        return [...prevShopCart, { id, precio, nombre, img, count: 1 }]
       }
     })
   }

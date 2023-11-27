@@ -10,7 +10,7 @@ const NavbarComponent = () => {
     isActive ? 'text-info fw-bold text-decoration-none me-3' : 'text-secondary text-decoration-none me-3'
 
   const calculateTotal = () => {
-    return shopCart.reduce((total, { count, price }) => total + price * count, 0)
+    return shopCart.reduce((total, { count, precio }) => total + precio * count, 0)
   }
 
 

@@ -25,8 +25,8 @@ const DashboardUser = () => {
   return (
     <Container>
       <Row>
-        <Col>
-          <div className="half-page">
+        <Col className='dashboard text-center justify-content-center'>
+          <div className="half-page-user ">
             {userData ? (
               <p>Bienvenido, {userData.email}!</p>
             ) : (
@@ -34,8 +34,9 @@ const DashboardUser = () => {
             )}
           </div>
         </Col>
-        <Col>
-          <div className="half-page">Aqui van los favorito y los pedidos</div>
+        <Col className='dashboard text-center justify-content-center'>
+          <div className="half-page">Aqui van los pedidos</div>
+          <div className="half-page">Aqui van los favoritos</div>
         </Col>
       </Row>
     </Container>

@@ -13,7 +13,7 @@ const Cart = () => {
     removeFromCart(updatedCart)
   }, [])
 
-  const total = updatedCart.reduce((a, { count, price }) => a + price * count, 0)
+  const total = updatedCart.reduce((a, { count, precio }) => a + precio * count, 0)
 
   const clearCart = () => {
     updatedCart.forEach((item) => removeFromCart(item.id));
@@ -35,14 +35,14 @@ const Cart = () => {
             <li key={item?.id} className="cart-item">
               <div className="item-details">
                 <img src={item?.img} alt={item?.name} className="img-small" />
-                <span className="fw-bold" style={{ textTransform: 'capitalize' }}>{item?.name}</span>
+                <span className="fw-bold" style={{ textTransform: 'capitalize' }}>{item?.nombre}</span>
                 <div className="quantity-controls">
-                  <span className="fw-bold">Precio: $ {formatNumber(item?.price)} </span>
+                  <span className="fw-bold">Precio: $ {formatNumber(item?.precio)} </span>
                   <Button variant="danger" onClick={() => decrease(item?.id)}>-</Button>
                   <b>{item?.count}</b>
                   <Button variant="primary" onClick={() => increase(item?.id)}>+</Button>
                 </div>
-                <span className="fw-bold">Total: ${formatNumber(item?.price * item?.count)} </span>
+                <span className="fw-bold">Total: ${formatNumber(item?.precio * item?.count)} </span>
               </div>
             </li>
           ))}
