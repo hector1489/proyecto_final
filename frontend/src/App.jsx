@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import DataContext from './context/dataContext'
+import axios from 'axios'
 import './App.css'
 import NavbarComponent from './components/Navbar'
 import Home from './views/Home'
@@ -82,17 +83,26 @@ function App() {
     }
   }
 
-  const addToFavorites = (userId, productId) => {
-    const currentDate = new Date().toISOString()
-    const isAlreadyInFavorites = data?.favoritos.some(favorite => favorite.id_usuario === userId && favorite.id_inventario === productId)
+  //favorites
+  const getFavorites = async () => {
+    const { data: card } = await axios.get(`${URLBASE}/favorites`)
+    setFavorites([...card])
+  }
 
-    if (!isAlreadyInFavorites) {
-      const newFavorites = [...data?.favoritos, { id_usuario: userId, id_inventario: productId, fecha_agregado: currentDate }]
-      setData((prevData) => ({ ...prevData, favoritos: newFavorites }))
-      console.log("Añadido a favoritos:", newFavorites)
-    } else {
-      console.log("El producto ya está en favoritos")
-    }
+  const addFavorites = async () => {
+    const card = { titulo, url: imgSrc, descripcion }
+    await axios.post(`${URLBASE}/favorites`, card)
+    getFavorites()
+  }
+
+  const like = async (id) => {
+    await axios.put(`${URLBASE}/favorites/favoritos/${id}`)
+    getFavorites()
+  }
+
+  const deletefavorite = async (id) => {
+    await axios.delete(`${URLBASE}/favorites/favoritos/${id}`)
+    getFavorites()
   }
 
   const globalState = {
@@ -104,9 +114,12 @@ function App() {
     decrease,
     removeFromCart,
     formatNumber,
-    addToFavorites,
     userData,
-    setUserData
+    setUserData,
+    getFavorites ,
+    addFavorites,
+    deletefavorite,
+    like
   }
 
   return (

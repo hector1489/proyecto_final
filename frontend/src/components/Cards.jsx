@@ -1,10 +1,18 @@
-import { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { Card, Button } from 'react-bootstrap'
 import DataContext from '../context/dataContext'
 import { ENDPOINT } from "../config/constans"
 
 function CardComponents() {
-  const { addToCart, formatNumber, addToFavorites } = useContext(DataContext)
+  const {
+    addToCart,
+    formatNumber,
+    getFavorites,
+    addFavorites,
+    deletefavorite,
+    like
+  } = useContext(DataContext)
+
   const [inventoryData, setInventoryData] = useState([])
 
   useEffect(() => {
@@ -14,17 +22,12 @@ function CardComponents() {
         const result = await response.json()
         setInventoryData(result)
       } catch (error) {
-        console.error("Error fetching inventory data:", error)
+        console.error("Error al obtener datos del inventario:", error)
       }
-    };
+    }
 
     fetchInventory()
   }, [])
-
-  const handleAddToFavorites = (id) => {
-    const userId = "123e4567-e89b-12d3-a456-426614174001"
-    addToFavorites(userId, id)
-  }
 
   const getImageUrl = (itemId) => {
     const imagen = inventoryData.productos.find((item) => item.id === itemId)?.url
@@ -43,11 +46,18 @@ function CardComponents() {
                 ${formatNumber(item?.precio)}
               </Card.Text>
               <Button variant="success" className="me-3" onClick={() => addToCart(item)}>
-                add 🛒
+                agregar 🛒
               </Button>
-              <Button variant="info text-white text-decoration-none" onClick={() => handleAddToFavorites(item?.id)}>
-                add favorites
-              </Button>
+              <div className='d-flex justify-content-between align-items-center'>
+                <div>
+                  <i
+                    onClick={() => like(item.id)}
+                    className={`fa-heart fa-xl ${item.likes ? 'fa-solid' : 'fa-regular'}`}
+                  />
+                  <span className='ms-1'>{item.likes}</span>
+                </div>
+                <i onClick={() => deletefavorite(item.id)} className='fa-solid fa-x' />
+              </div>
             </div>
           </Card.Body>
         </Card>
@@ -57,4 +67,3 @@ function CardComponents() {
 }
 
 export default CardComponents
-

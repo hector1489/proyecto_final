@@ -14,6 +14,7 @@ const DashboardUser = () => {
         const decodedToken = jwtDecode(token)
         console.log(decodedToken)
         setUserData(decodedToken)
+        getFavorites()
       } catch (error) {
         console.error('Error al decodificar el token:', error)
       }
