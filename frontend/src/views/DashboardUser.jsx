@@ -1,18 +1,20 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import { jwtDecode } from 'jwt-decode'
+import DataContext from '../context/dataContext'
+import CardComponents from '../components/Cards'
 
 const DashboardUser = () => {
   const [userData, setUserData] = useState(null)
+  const [favorites, setFavorites] = useState([])
+  const { getFavorites } = useContext(DataContext)
 
   useEffect(() => {
     const token = window.sessionStorage.getItem('token')
-    console.log('Token en DashboardUser:', token)
 
     if (token) {
       try {
         const decodedToken = jwtDecode(token)
-        console.log(decodedToken)
         setUserData(decodedToken)
         getFavorites()
       } catch (error) {
@@ -21,13 +23,13 @@ const DashboardUser = () => {
     } else {
       console.error('No se encontró un token en la sesión.')
     }
-  }, [])
+  }, [getFavorites])
 
   return (
     <Container>
       <Row>
         <Col className='dashboard text-center justify-content-center'>
-          <div className="half-page-user ">
+          <div className="half-page-user">
             {userData ? (
               <p>Bienvenido, {userData.email}!</p>
             ) : (
@@ -37,7 +39,12 @@ const DashboardUser = () => {
         </Col>
         <Col className='dashboard text-center justify-content-center'>
           <div className="half-page">Aqui van los pedidos</div>
-          <div className="half-page">Aqui van los favoritos</div>
+          <div className="half-page">
+            <h2>Favoritos</h2>
+            {favorites.map((favorite) => (
+              <CardComponents key={favorite.id_inventario} itemId={favorite.id_inventario} />
+            ))}
+          </div>
         </Col>
       </Row>
     </Container>

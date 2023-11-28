@@ -42,7 +42,6 @@ function LoginComponent() {
       window.sessionStorage.setItem('token', data.token)
       alert('Usuario identificado con éxito.')
       setUserData(data)
-      console.log('Token antes de la redirección:', window.sessionStorage.getItem('token'))
       navigate('/DashboardUser')
     } catch (error) {
       console.error(error)

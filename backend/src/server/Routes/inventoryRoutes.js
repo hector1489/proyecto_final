@@ -18,7 +18,7 @@ inventoryRoutes.get('/inventario', (_, res) => {
 })
 
 //Endpoint para obtener un producto específico por su ID.
-inventoryRoutes.get('/inventario/:id', (_, res) => {
+inventoryRoutes.get('/inventario/:id', (req, res) => {
     getProductoById(req.params.id)
         .then((producto) => res.status(200).json({ producto }))
         .catch((error) => res.status(500).json(error))

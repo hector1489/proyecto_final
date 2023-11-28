@@ -11,10 +11,11 @@ import Cart from './views/Cart'
 import AllProducts from './views/AllProducts'
 import LoginSignup from './views/loginSignup'
 import DashboardUser from './views/DashboardUser'
-import DashboardAdmin from './views/DashboardAdmin'
+import Details from './views/Details'
 
 
 import { URLBASE } from './config/constans'
+
 
 
 function App() {
@@ -85,18 +86,27 @@ function App() {
 
   //favorites
   const getFavorites = async () => {
-    const { data: card } = await axios.get(`${URLBASE}/favorites`)
-    setFavorites([...card])
+    try {
+      const response = await axios.get(`${URLBASE}/favorites/favoritos/${id_usuario}`)
+      const favoritesData = response.data
+      setFavorites(favoritesData)
+    } catch (error) {
+      console.error('Error al obtener favoritos:', error)
+    }
   }
 
-  const addFavorites = async () => {
-    const card = { titulo, url: imgSrc, descripcion }
-    await axios.post(`${URLBASE}/favorites`, card)
+  const addFavorites = async (id_inventario) => {
+    const { id_usuario } = userData
+    const favoritoData = {
+      id_usuario,
+      id_inventario,
+    }
+    await axios.post(`${URLBASE}/favorites`, favoritoData)
     getFavorites()
   }
 
-  const like = async (id) => {
-    await axios.put(`${URLBASE}/favorites/favoritos/${id}`)
+  const like = async (id_inventario) => {
+    await axios.put(`${URLBASE}/favorites/favoritos`)
     getFavorites()
   }
 
@@ -116,7 +126,7 @@ function App() {
     formatNumber,
     userData,
     setUserData,
-    getFavorites ,
+    getFavorites,
     addFavorites,
     deletefavorite,
     like
@@ -130,9 +140,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/Login" element={<LoginSignup />} />
           <Route path="/DashboardUser" element={<DashboardUser />} />
-          <Route path="/DashboardAdmin" element={<DashboardAdmin />} />
           <Route path="/AllProducts" element={<AllProducts />} />
           <Route path="/Contacts" element={<Contacts />} />
+          <Route path="/details/:id" element={<Details />} />
           <Route path="/Cart" element={<Cart />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
